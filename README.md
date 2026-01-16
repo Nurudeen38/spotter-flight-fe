@@ -4,22 +4,29 @@ A simple and responsive clone of Google Flights built with React. This project a
 
 ## 🔧 Tech Stack
 
-- **React** – Frontend library
+- **React 19** – Frontend library
+- **Vite** – Build tool
+- **TypeScript** – Static type checking
 - **MUI (Material UI)** – Component library for UI elements
 - **MUI Date Picker** – For selecting travel dates
 - **Styled-Components** – CSS-in-JS for component styling
+- **Recharts** – For data visualization (Price Graph)
+- **React Hook Form** – For form state management
+- **Zod** – For schema validation
 - **Axios** – For API requests
 - **React Query** – For data fetching and caching
-- **Day.js** – Lightweight date utility for manipulating and formatting dates
+- **Date-fns** – Date utility library
+- **Lucide React** – Icon library
 
 ## 🚀 Features
 
-- Flight search by origin, destination, and date
-- Responsive design
-- Modern UI using Material UI
-- Clean and maintainable code with styled-components
-- Loading and error handling with React Query
-- Date manipulation and formatting using Day.js
+- **Flight Search**: Search by origin, destination, travel dates, and travel class.
+- **Advanced Filtering**: Filter by price range, stops, airlines, and amenities.
+- **Real-time Price Graph**: Visual representation of flight prices over time.
+- **Analytics Dashboard**: View quick stats like cheapest flight, average price, and fastest route.
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices.
+- **Modern UI**: Clean interface using Material UI and custom styled-components.
+- **Form Validation**: Robust validation using Zod and React Hook Form.
 
 ## 📦 Installation
 
@@ -43,13 +50,21 @@ This project uses the Amadeus API for flight searches. Create a `.env` file in t
 src/
 ├── assets/          # Static assets (images, icons)
 ├── components/      # Reusable UI components
-├── features/        # Domain-specific modules
-├── hooks/           # Custom hooks
-├── pages/           # Route-level components
-├── providers/       # App-level context providers
-├── routes/          # App routing
-├── services/        # API calls
+│   ├── atoms/       # Basic building blocks (Buttons, Inputs)
+│   ├── molecules/   # Simple groups of atoms (Cards, FormFields)
+│   ├── organisms/   # Complex UI sections (Navbar, Filters)
+│   └── shared/      # Shared styled components
+├── constants/       # App constants and configuration
+├── hooks/           # Custom React hooks
+├── interfaces/      # Type definitions (Interfaces)
+├── Layout/          # Layout wrappers
+├── pages/           # Route-level page components
+├── providers/       # Context providers (Theme, QueryClient)
+├── routes/          # Application routing configuration
+├── schemas/         # Zod validation schemas
+├── services/        # API services and axios setup
 ├── styles/          # Global styles and theme setup
+├── types/           # Type definitions (Types)
 ├── utils/           # Helper utility functions
-└── main.tsx         # Entry point
+└── main.tsx         # Application entry point
 ```
