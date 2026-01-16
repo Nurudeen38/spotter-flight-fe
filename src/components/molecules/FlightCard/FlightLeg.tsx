@@ -1,3 +1,4 @@
+import { Clock, AlertTriangle } from "lucide-react";
 import type { Itinerary } from "../../../interfaces";
 import { formatTime, formatDate } from "../../../utils/formatUtils";
 import { formatDurationFromMinutes, parseDurationToMinutes, getAircraftName } from "../../../utils/flightUtils";
@@ -59,7 +60,7 @@ export const FlightLeg = ({ itinerary, label, carrierName, cabinClass }: FlightL
 
             <FlightDetails>
                 <DetailItem>
-                    <WarningIcon>⚠</WarningIcon>
+                    <WarningIcon><AlertTriangle size={12} /></WarningIcon>
                     {carrierName}
                 </DetailItem>
                 <DetailItem>Flight {firstSegment.number}</DetailItem>
@@ -68,7 +69,7 @@ export const FlightLeg = ({ itinerary, label, carrierName, cabinClass }: FlightL
 
             <FlightSummary>
                 <SummaryItem>
-                    <ClockIcon>⏱</ClockIcon>
+                    <ClockIcon><Clock size={12} /></ClockIcon>
                     Total: {formatDurationFromMinutes(duration)}
                 </SummaryItem>
                 <SummaryItem>

@@ -24,12 +24,12 @@ const apiClient: AxiosInstance = axios.create({
 
 // Add interceptor to include Bearer token
 apiClient.interceptors.request.use(async (config) => {
-  const storedToken = Cookies.get("accessToken");
+  let storedToken = Cookies.get("accessToken");
   const storedExp = Cookies.get("tokenExpiration");
   if (!storedToken || !storedExp || Date.now() >= parseInt(storedExp)) {
-    await getAccessToken();
+    storedToken = await getAccessToken();
   }
-  config.headers.Authorization = `Bearer ${Cookies.get("accessToken")}`;
+  config.headers.Authorization = `Bearer ${storedToken}`;
   return config;
 });
 

@@ -120,8 +120,15 @@ export const DateInputs = styled.div`
   display: flex;
   gap: ${theme.space4};
 
+
   & > * {
     flex: 1;
+  }
+
+  
+  & > * > div {
+    flex: 1;
+      border-radius: ${theme.radiusLg};
   }
 
   @media (max-width: 575px) {

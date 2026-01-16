@@ -12,7 +12,7 @@ import {
     PriceGraph,
 } from "../../components";
 import { AnalyticsCards } from "../../components/molecules/AnalyticsCards";
-import { LoadingSkeleton, EmptyState } from "../../components/shared";
+import { LoadingSkeleton, EmptyState, ErrorState } from "../../components/shared";
 import {
     useFlightFormUrlSync,
     useFlightSearch,
@@ -78,7 +78,7 @@ const SearchPage = () => {
     }, [tripType, returnDateValue, setValue]);
 
     // Fetch flights
-    const { data, isLoading, isFetching } = useFlightSearch(
+    const { data, isLoading, isFetching, isError, refetch } = useFlightSearch(
         shouldSearch ? queryParams : null
     );
 
@@ -124,7 +124,6 @@ const SearchPage = () => {
         if (!isValidFormData(formData)) {
             return;
         }
-
         const searchData = buildSearchFormData(formData);
         const urlParams = buildFlightSearchUrl(searchData);
         setSearchParams(urlParams);
@@ -272,6 +271,11 @@ const SearchPage = () => {
                             Enter your origin, destination, and travel dates to find the best flight deals. Use filters to narrow down results.
                         </EmptyDescription>
                     </EmptyStateWrapper>
+                ) : isError ? (
+                    <ErrorState
+                        onRetry={() => refetch()}
+                        message="We encountered an issue while searching for flights. Please check your connection and try again."
+                    />
                 ) : isLoading || isFetching ? (
                     <LoadingSkeleton>
                         <Skeleton variant="rectangular" width="100%" height={80} />
