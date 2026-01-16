@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { ArrowLeftRight, Search, Plane } from "lucide-react";
-import { Skeleton, Select, MenuItem } from "@mui/material";
+import { Skeleton, Select, MenuItem, CircularProgress } from "@mui/material";
 import { startOfDay } from "date-fns";
 import {
     DatePicker,
@@ -82,6 +82,7 @@ const SearchPage = () => {
         shouldSearch ? queryParams : null
     );
 
+    const fetching = isLoading || isFetching;
     const rawFlightOffers = (data?.data || []) as FlightOffer[];
     const rawCarrierDictionary = (data?.dictionaries?.carriers || {}) as Record<string, string>;
 
@@ -141,6 +142,12 @@ const SearchPage = () => {
             resultsRef.current.scrollIntoView({ behavior: "smooth" });
         }
     };
+
+    useEffect(() => {
+        if (!isLoading && !isFetching && sortedFlights.length > 0 && resultsRef.current) {
+            resultsRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [isLoading, isFetching, sortedFlights.length]);
 
     return (
         <PageWrapper>
@@ -238,9 +245,18 @@ const SearchPage = () => {
                     </OtherInputs>
                 </FormGrid>
 
-                <SearchButton type="submit">
-                    <Search size={18} />
-                    Search Flights
+                <SearchButton type="submit" disabled={fetching}>
+                    {fetching ? (
+                        <>
+                            <CircularProgress size={20} color="inherit" thickness={4} />
+                            Searching...
+                        </>
+                    ) : (
+                        <>
+                            <Search size={18} />
+                            Search Flights
+                        </>
+                    )}
                 </SearchButton>
             </SearchCard>
 

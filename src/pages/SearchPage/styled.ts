@@ -201,6 +201,13 @@ export const SearchButton = styled.button`
     transform: scale(0.98);
   }
 
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
   @media (max-width: 575px) {
     max-width: 100%;
   }
