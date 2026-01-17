@@ -15,7 +15,7 @@ const Button = ({ children }: IProps) => {
 
 export { Button };
 
-const ButtonWrapper = styled(MUIButton)`
+export const ButtonWrapper = styled(MUIButton)`
   background-color: var(--primary, #0fb5ae) !important;
   color: #134e4a !important;
   transition: all 0.2s ease;

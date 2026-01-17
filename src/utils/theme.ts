@@ -22,6 +22,12 @@ export const theme = {
   blue: "var(--blue)",
   blueLight: "var(--blue-light)",
 
+  // Additional colors
+  warning: "var(--warning)",
+  warningLight: "var(--warning-light)",
+  success: "var(--success)",
+  successLight: "var(--success-light)",
+
   // Text colors
   text: "var(--text)",
   textSecondary: "var(--text-secondary)",
@@ -40,7 +46,7 @@ export const theme = {
   // States
   required: "var(--error)",
   error: "var(--error)",
-  success: "var(--success)",
+
 
   // Typography
   fontXs: "var(--font-xs)",

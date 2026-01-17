@@ -10,7 +10,9 @@ import {
     FilterBar,
     FlightCard,
     PriceGraph,
+    FlightDetailsModal,
 } from "../../components";
+import { useState } from "react";
 import { AnalyticsCards } from "../../components/molecules/AnalyticsCards";
 import { LoadingSkeleton, EmptyState, ErrorState } from "../../components/shared";
 import {
@@ -135,6 +137,19 @@ const SearchPage = () => {
         const to = toValue;
         setValue("from", to, { shouldDirty: true });
         setValue("to", from, { shouldDirty: true });
+    };
+
+    const [selectedFlight, setSelectedFlight] = useState<FlightOffer | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleFlightSelect = (flight: FlightOffer) => {
+        setSelectedFlight(flight);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setSelectedFlight(null);
     };
 
     const handleScrollToFilters = () => {
@@ -313,6 +328,7 @@ const SearchPage = () => {
                                         carrierDictionary={rawCarrierDictionary}
                                         aircraftDictionary={rawAircraftDictionary}
                                         id={`flight-card-${it.id}`}
+                                        onSelect={handleFlightSelect}
                                     />
                                 ))}
                                 {totalPages > 1 && (
@@ -338,6 +354,14 @@ const SearchPage = () => {
                     </>
                 )}
             </ResultsSection>
+
+            <FlightDetailsModal
+                open={isModalOpen}
+                onClose={handleCloseModal}
+                flightOffer={selectedFlight}
+                carrierDictionary={rawCarrierDictionary}
+                aircraftDictionary={rawAircraftDictionary}
+            />
         </PageWrapper>
     );
 };

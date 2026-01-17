@@ -25,7 +25,15 @@
   
   /* States */
   --error: #ef4444;
+  --warning: #f59e0b;
+  --warning-light: #fffbeb;
   --success: #22c55e;
+  --success-light: #dcfce7;
+  
+  /* Chip colors */
+  --chip-bg: #f1f5f9;
+  --chip-text: #0f172a;
+  --chip-border: #cbd5e1;
   
   /* Typography Scale */
   --font-xs: 0.6875rem;   /* 11px - fine print */
@@ -84,6 +92,17 @@
   --border: #334155;
   --border-light: #1e293b;
   --border-focus: #60a5fa;
+  
+  /* Dark mode overrides for light variants */
+  --primary-light: rgba(15, 181, 174, 0.15);
+  --warning-light: rgba(245, 158, 11, 0.15);
+  --success-light: rgba(34, 197, 94, 0.15);
+  --background-card: #1e293b;
+  
+  /* Chip overrides */
+  --chip-bg: #334155;
+  --chip-text: #f8fafc;
+  --chip-border: #475569;
 }
 
 * {
