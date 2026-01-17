@@ -13,6 +13,7 @@ export const searchCities = (query: string) => {
     params: {
       keyword: query,
       max: MAX_CITY_RESULTS,
+      include: "AIRPORTS"
     },
   });
 };

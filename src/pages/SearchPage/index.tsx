@@ -85,6 +85,7 @@ const SearchPage = () => {
     const fetching = isLoading || isFetching;
     const rawFlightOffers = (data?.data || []) as FlightOffer[];
     const rawCarrierDictionary = (data?.dictionaries?.carriers || {}) as Record<string, string>;
+    const rawAircraftDictionary = (data?.dictionaries?.aircraft || {}) as Record<string, string>;
 
     // Filters and sorting
     const {
@@ -310,6 +311,7 @@ const SearchPage = () => {
                                         key={it.id}
                                         flightOffer={it}
                                         carrierDictionary={rawCarrierDictionary}
+                                        aircraftDictionary={rawAircraftDictionary}
                                         id={`flight-card-${it.id}`}
                                     />
                                 ))}

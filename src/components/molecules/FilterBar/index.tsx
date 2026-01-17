@@ -1,5 +1,6 @@
 
 import { useState, useRef, useEffect } from "react";
+import { Slider } from "@mui/material";
 import styled from "styled-components";
 import { theme } from "../../../utils";
 import type { FlightFilters, CarrierDictionary } from "../../../interfaces";
@@ -33,13 +34,30 @@ const FilterBar = ({
     onFiltersChange({ ...filters, stops });
   };
 
-  const handlePriceRangeChange = (field: "min" | "max", value: number | null) => {
+  const [sliderValue, setSliderValue] = useState<number[]>([
+    filters.priceRange.min ?? priceRange.min,
+    filters.priceRange.max ?? priceRange.max,
+  ]);
+
+  useEffect(() => {
+    setSliderValue([
+      filters.priceRange.min ?? priceRange.min,
+      filters.priceRange.max ?? priceRange.max,
+    ]);
+  }, [filters.priceRange, priceRange]);
+
+  const handleSliderChange = (_event: Event, newValue: number | number[]) => {
+    setSliderValue(newValue as number[]);
+  };
+
+  const handleSliderChangeCommitted = (
+    _event: Event | React.SyntheticEvent | undefined,
+    newValue: number | number[]
+  ) => {
+    const [min, max] = newValue as number[];
     onFiltersChange({
       ...filters,
-      priceRange: {
-        ...filters.priceRange,
-        [field]: value,
-      },
+      priceRange: { min, max },
     });
   };
 
@@ -153,41 +171,25 @@ const FilterBar = ({
             <FilterSection>
               <label>Price Range</label>
               <div className="price-inputs">
-                <div className="input-group">
-                  <label htmlFor="min-price">Min</label>
-                  <input
-                    id="min-price"
-                    type="number"
-                    placeholder={priceRange.min.toString()}
-                    value={filters.priceRange.min || ""}
-                    onChange={(e) =>
-                      handlePriceRangeChange(
-                        "min",
-                        e.target.value ? parseFloat(e.target.value) : null
-                      )
-                    }
-                    min={priceRange.min}
-                    max={priceRange.max}
-                  />
+                <div className="price-values">
+                  <span>${sliderValue[0]}</span>
+                  <span>${sliderValue[1]}</span>
                 </div>
-                <span className="separator">-</span>
-                <div className="input-group">
-                  <label htmlFor="max-price">Max</label>
-                  <input
-                    id="max-price"
-                    type="number"
-                    placeholder={priceRange.max.toString()}
-                    value={filters.priceRange.max || ""}
-                    onChange={(e) =>
-                      handlePriceRangeChange(
-                        "max",
-                        e.target.value ? parseFloat(e.target.value) : null
-                      )
-                    }
-                    min={priceRange.min}
-                    max={priceRange.max}
-                  />
-                </div>
+                <Slider
+                  getAriaLabel={() => "Price range"}
+                  value={sliderValue}
+                  onChange={handleSliderChange}
+                  onChangeCommitted={handleSliderChangeCommitted}
+                  valueLabelDisplay="auto"
+                  min={priceRange.min}
+                  max={priceRange.max}
+                  sx={{
+                    color: theme.primary,
+                    "& .MuiSlider-thumb": {
+                      backgroundColor: theme.primary,
+                    },
+                  }}
+                />
               </div>
             </FilterSection>
 
@@ -382,41 +384,16 @@ const FilterSection = styled.div`
 
   & .price-inputs {
     display: flex;
-    align-items: center;
-    gap: ${theme.space4};
+    flex-direction: column;
+    gap: ${theme.space2};
+    padding: 0 ${theme.space2};
 
-    & .separator {
-      color: ${theme.textSecondary};
-      font-weight: ${theme.fontMedium};
-    }
-
-    & .input-group {
-      flex: 1;
+    & .price-values {
       display: flex;
-      flex-direction: column;
-      gap: ${theme.space2};
-
-      & > label {
-        font-size: ${theme.fontSm};
-        color: ${theme.textSecondary};
-        font-weight: ${theme.fontMedium};
-      }
-
-      & > input {
-        padding: ${theme.space2};
-        border: 1px solid ${theme.border};
-        border-radius: ${theme.radiusMd};
-        font-size: ${theme.fontBase};
-        transition: all ${theme.transitionSlow};
-        background: ${theme.backgroundCard};
-        color: ${theme.text};
-
-        &:focus {
-          outline: none;
-          border-color: ${theme.primary};
-          box-shadow: 0 0 0 3px ${theme.primaryLight};
-        }
-      }
+      justify-content: space-between;
+      color: ${theme.textSecondary};
+      font-size: ${theme.fontSm};
+      font-weight: ${theme.fontMedium};
     }
   }
 

@@ -133,18 +133,9 @@ export const parseDurationToMinutes = (duration: string): number => {
 /**
  * Get aircraft name from code
  */
-export const getAircraftName = (code?: string): string => {
+export const getAircraftName = (code: string, aircraftDictionary?: Record<string, string>): string => {
   if (!code) return "";
-  const aircraftMap: Record<string, string> = {
-    "744": "BOEING 747-400",
-    "777": "BOEING 777",
-    "788": "BOEING 787-8",
-    "789": "BOEING 787-9",
-    "320": "AIRBUS A320",
-    "321": "AIRBUS A321",
-    "350": "AIRBUS A350",
-    "380": "AIRBUS A380",
-  };
-  return aircraftMap[code] || `Aircraft ${code}`;
+
+  return aircraftDictionary?.[code] || `Aircraft ${code}`;
 };
 

@@ -1,5 +1,5 @@
 import { Clock, AlertTriangle } from "lucide-react";
-import type { Itinerary } from "../../../interfaces";
+import type { CarrierDictionary, Itinerary } from "../../../interfaces";
 import { formatTime, formatDate } from "../../../utils/formatUtils";
 import { formatDurationFromMinutes, parseDurationToMinutes, getAircraftName } from "../../../utils/flightUtils";
 import {
@@ -26,9 +26,10 @@ interface FlightLegProps {
     label: string;
     carrierName: string;
     cabinClass: string;
+    aircraftDictionary?: Record<string, string>;
 }
 
-export const FlightLeg = ({ itinerary, label, carrierName, cabinClass }: FlightLegProps) => {
+export const FlightLeg = ({ itinerary, label, carrierName, cabinClass, aircraftDictionary }: FlightLegProps) => {
     const firstSegment = itinerary.segments[0];
     const lastSegment = itinerary.segments[itinerary.segments.length - 1];
     const duration = parseDurationToMinutes(itinerary.duration);
@@ -64,7 +65,7 @@ export const FlightLeg = ({ itinerary, label, carrierName, cabinClass }: FlightL
                     {carrierName}
                 </DetailItem>
                 <DetailItem>Flight {firstSegment.number}</DetailItem>
-                <DetailItem>{getAircraftName(firstSegment.aircraft?.code)}</DetailItem>
+                <DetailItem>{getAircraftName(firstSegment.aircraft?.code, aircraftDictionary)}</DetailItem>
             </FlightDetails>
 
             <FlightSummary>

@@ -18,11 +18,12 @@ import {
 interface FlightCardProps {
   flightOffer: FlightOffer;
   carrierDictionary?: Record<string, string>;
+  aircraftDictionary?: Record<string, string>;
   id?: string;
   onSelect?: (offer: FlightOffer) => void;
 }
 
-const FlightCard = ({ flightOffer, carrierDictionary, id, onSelect }: FlightCardProps) => {
+const FlightCard = ({ flightOffer, carrierDictionary, id, onSelect, aircraftDictionary }: FlightCardProps) => {
   const isRoundTrip = flightOffer.itineraries.length > 1;
 
   // Outbound leg
@@ -58,6 +59,7 @@ const FlightCard = ({ flightOffer, carrierDictionary, id, onSelect }: FlightCard
           label="Outbound"
           carrierName={carrierName}
           cabinClass={cabinClass}
+          aircraftDictionary={aircraftDictionary}
         />
 
         {/* Return Flight */}
@@ -67,6 +69,7 @@ const FlightCard = ({ flightOffer, carrierDictionary, id, onSelect }: FlightCard
             label="Return"
             carrierName={getAirlineName(returnItinerary.segments[0].carrierCode, carrierDictionary)}
             cabinClass={cabinClass}
+            aircraftDictionary={aircraftDictionary}
           />
         )}
 
