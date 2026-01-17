@@ -204,11 +204,11 @@ const ScrollableContent = styled.div`
 
 const PriceOverview = styled.div`
   background: var(--primary-light);
-  padding: 16px 24px;
+  padding: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid var(--primary-light);
 `;
 
 const PriceInfo = styled.div`
@@ -378,11 +378,13 @@ const DetailsColumn = styled.div`
 const InfoBadge = styled.span`
     font-size: 0.75rem;
     font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 20px;
+    padding: 6px 12px;
+    border-radius: 8px;
     background: var(--chip-bg);
     color: var(--chip-text);
     border: 1px solid var(--chip-border);
+    font-weight: 700;
+    letter-spacing: 0.5px;
     display: inline-flex;
     align-items: center;
     gap: 6px;

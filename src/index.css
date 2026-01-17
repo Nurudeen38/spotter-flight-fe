@@ -31,9 +31,9 @@
   --success-light: #dcfce7;
   
   /* Chip colors */
-  --chip-bg: #f1f5f9;
-  --chip-text: #0f172a;
-  --chip-border: #cbd5e1;
+  --chip-bg: var(--primary-light);
+  --chip-text: var(--primary);
+  --chip-border: transparent;
   
   /* Typography Scale */
   --font-xs: 0.6875rem;   /* 11px - fine print */
@@ -100,9 +100,9 @@
   --background-card: #1e293b;
   
   /* Chip overrides */
-  --chip-bg: #334155;
-  --chip-text: #f8fafc;
-  --chip-border: #475569;
+  --chip-bg: rgba(15, 181, 174, 0.15);
+  --chip-text: #2dd4bf;
+  --chip-border: transparent;
 }
 
 * {
