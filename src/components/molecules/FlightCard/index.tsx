@@ -1,4 +1,4 @@
-import type { FlightOffer } from "../../../interfaces";
+import type { FlightOffer } from "../../../types";
 import { formatCurrency } from "../../../utils/formatUtils";
 import { getAirlineName, getAllConnectionAirports } from "../../../utils/flightUtils";
 import { FlightLeg } from "./FlightLeg";

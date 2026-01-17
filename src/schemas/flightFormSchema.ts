@@ -1,20 +1,33 @@
 import z from "zod";
-import type { City } from "../interfaces";
+import type { City, TripType, CabinClass } from "../types";
 
-export type TripType = "one-way" | "round-trip";
+export type { TripType, CabinClass };
 
-export type CabinClass = "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
+export const citySchema = z.object({
+  iataCode: z.string(),
+  name: z.string(),
+  type: z.string(),
+  subType: z.string(),
+  address: z.object({
+    countryCode: z.string(),
+    stateCode: z.string().optional().or(z.literal("")),
+  }),
+  geoCode: z.object({
+    latitude: z.number().optional(),
+    longitude: z.number().optional(),
+  }).optional(),
+});
 
 export const flightFormSchema = z
   .object({
     type: z.string().min(1, "Required!"),
-    from: z
-      .any()
+    from: citySchema
+      .nullable()
       .refine((val) => val && val.iataCode, "Please select departure city"),
-    to: z
-      .any()
+    to: citySchema
+      .nullable()
       .refine((val) => val && val.iataCode, "Please select destination city"),
-    departure: z.date().min(new Date(), "Departure date must be in the future"),
+    departure: z.date().min(new Date(new Date().setHours(0, 0, 0, 0)), "Departure date must be in the future"),
     return: z.date().optional().nullable(),
     passengers: z.number().min(1, "Required!"),
     travelClass: z.enum(["ECONOMY", "PREMIUM_ECONOMY", "BUSINESS", "FIRST"]),
@@ -49,4 +62,3 @@ export interface FlightFormValues {
   passengers: number;
   travelClass: CabinClass;
 }
-

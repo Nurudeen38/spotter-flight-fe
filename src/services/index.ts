@@ -1,4 +1,4 @@
-import type { FlightSearchParams } from "../interfaces";
+import type { FlightSearchParams } from "../types";
 import { apiClient } from "../utils";
 import { MAX_FLIGHT_RESULTS, CITY_SEARCH_MIN_LENGTH } from "../constants";
 

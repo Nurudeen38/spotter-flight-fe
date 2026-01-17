@@ -1,4 +1,4 @@
-import type { FlightOffer, FlightFilters } from "../interfaces";
+import type { FlightOffer, FlightFilters } from "../types";
 import { getTotalStops, getPrimaryAirline, getFlightPrice } from "./flightUtils";
 
 /**

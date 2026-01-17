@@ -1,7 +1,7 @@
 import { Autocomplete, CircularProgress, TextField } from "@mui/material";
 import styled from "styled-components";
 import { theme } from "../../../utils";
-import type { City } from "../../../interfaces";
+import type { City } from "../../../types";
 import { Fragment, useState } from "react";
 import { useCitySearch, useTopCities, useDebounceInput } from "../../../hooks";
 import { DEBOUNCE_DELAY_MS } from "../../../constants";

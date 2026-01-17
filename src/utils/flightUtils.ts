@@ -1,4 +1,4 @@
-import type { FlightOffer, CarrierDictionary } from "../interfaces";
+import type { FlightOffer, CarrierDictionary } from "../types";
 import { formatDateForUrl } from "./urlUtils";
 import type { FlightFormSchema } from "../schemas/flightFormSchema";
 

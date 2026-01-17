@@ -8,7 +8,7 @@ import {
   ReferenceLine,
 } from "recharts";
 import { TrendingUp, TrendingDown, Info, Sparkles } from "lucide-react";
-import type { FlightOffer } from "../../../interfaces";
+import type { FlightOffer } from "../../../types";
 import { usePriceStats } from "../../../hooks/usePriceStats";
 import { formatCurrency, formatCompactCurrency } from "../../../utils/formatUtils";
 import {

@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { parseISO, isValid } from "date-fns";
-import type { City } from "../interfaces";
+import type { City } from "../types";
 import { useCitySearch } from "./useCitySearch";
 import {
   extractFlightSearchParams,

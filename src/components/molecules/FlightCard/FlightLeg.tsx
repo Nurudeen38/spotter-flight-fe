@@ -1,5 +1,5 @@
 import { Clock, AlertTriangle } from "lucide-react";
-import type { CarrierDictionary, Itinerary } from "../../../interfaces";
+import type { Itinerary } from "../../../types";
 import { formatTime, formatDate } from "../../../utils/formatUtils";
 import { formatDurationFromMinutes, parseDurationToMinutes, getAircraftName } from "../../../utils/flightUtils";
 import {

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import type { FlightSearchParams } from "../interfaces";
+import type { FlightSearchParams } from "../types";
 import { searchFlights } from "../services";
 import { QUERY_KEYS } from "../constants";
 

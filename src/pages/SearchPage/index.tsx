@@ -24,7 +24,7 @@ import {
 import { buildFlightSearchUrl, buildSearchFormData, isValidFormData } from "../../utils";
 import { TRIP_TYPES, FORM_DEFAULTS, CABIN_CLASS_OPTIONS } from "../../constants";
 import type { FlightFormSchema } from "../../schemas/flightFormSchema";
-import type { FlightOffer } from "../../interfaces";
+import type { FlightOffer } from "../../types";
 import {
     PageWrapper,
     HeroSection,
