@@ -1,8 +1,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Slider } from "@mui/material";
-import styled from "styled-components";
-import { theme } from "@/utils";
+import { styled, useTheme as useMuiTheme } from "@mui/material/styles";
 import type { FlightFilters, CarrierDictionary } from "@/types";
 import type { SortOption } from "@/utils/flightSorting";
 import { SORT_OPTIONS } from "@/constants";
@@ -29,6 +28,7 @@ const FilterBar = ({
 }: FilterBarProps) => {
   const [showFilters, setShowFilters] = useState(false);
   const filtersCardRef = useRef<HTMLDivElement>(null);
+  const muiTheme = useMuiTheme();
 
   const handleStopsChange = (stops: number | null) => {
     onFiltersChange({ ...filters, stops });
@@ -184,9 +184,9 @@ const FilterBar = ({
                   min={priceRange.min}
                   max={priceRange.max}
                   sx={{
-                    color: theme.primary,
+                    color: muiTheme.palette.primary.main,
                     "& .MuiSlider-thumb": {
-                      backgroundColor: theme.primary,
+                      backgroundColor: muiTheme.palette.primary.main,
                     },
                   }}
                 />
@@ -220,220 +220,221 @@ const FilterBar = ({
 
 export { FilterBar };
 
-const Card = styled.div`
-  margin-bottom: ${theme.space8};
-  position: sticky;
-  top: 0;
-  background: ${theme.backgroundCard};
-  z-index: 10;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+const Card = styled("div")(({ theme }) => ({
+  marginBottom: theme.customSpacing.space8,
+  position: "sticky",
+  top: 0,
+  background: theme.palette.background.paper,
+  zIndex: 10,
+  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
 
-  & .filter-bar {
-    display: flex;
-    gap: ${theme.space4};
-    align-items: center;
-    flex-wrap: wrap;
+  "& .filter-bar": {
+    display: "flex",
+    gap: theme.customSpacing.space4,
+    alignItems: "center",
+    flexWrap: "wrap",
 
-    & .spacer {
-      flex: 1;
-    }
+    "& .spacer": {
+      flex: 1,
+    },
 
-    & button {
-      background-color: transparent;
-      cursor: pointer;
-      border: none;
-      padding: ${theme.space2} ${theme.space4};
-      border-radius: ${theme.radiusMd};
-      transition: all ${theme.transitionSlow};
-      font-size: ${theme.fontBase};
-      color: ${theme.text};
+    "& button": {
+      backgroundColor: "transparent",
+      cursor: "pointer",
+      border: "none",
+      padding: `${theme.customSpacing.space2} ${theme.customSpacing.space4}`,
+      borderRadius: theme.borderRadius.md,
+      transition: theme.customTransitions.slow,
+      fontSize: "0.875rem",
+      color: theme.palette.text.primary,
 
-      &:hover {
-        background: ${theme.primaryLight};
-        color: ${theme.primary};
-        transition: all ${theme.transitionSlow};
-      }
+      "&:hover": {
+        background: theme.palette.primary.light,
+        color: theme.palette.primary.main,
+        transition: theme.customTransitions.slow,
+      },
 
-      &.active {
-        background-color: ${theme.primary};
-        color: white;
-      }
+      "&.active": {
+        backgroundColor: theme.palette.primary.main,
+        color: "white",
+      },
 
-      &.filter-toggle {
-        border: 1px solid ${theme.border};
-        background: ${theme.backgroundCard};
+      "&.filter-toggle": {
+        border: `1px solid ${theme.palette.border.main}`,
+        background: theme.palette.background.paper,
 
-        &.has-filters {
-          background: ${theme.primary};
-          color: white;
-          border-color: ${theme.primary};
-        }
-      }
-    }
-  }
+        "&.has-filters": {
+          background: theme.palette.primary.main,
+          color: "white",
+          borderColor: theme.palette.primary.main,
+        },
+      },
+    },
+  },
 
-  @media (max-width: 768px) {
-    & .filter-bar {
-      & .spacer {
-        display: none;
-      }
-    }
-  }
+  "@media (max-width: 768px)": {
+    "& .filter-bar": {
+      "& .spacer": {
+        display: "none",
+      },
+    },
+  },
 
-  @media (max-width: 375px) {
-    & .filter-bar {
-      flex-direction: column;
+  "@media (max-width: 375px)": {
+    "& .filter-bar": {
+      flexDirection: "column",
 
-      & button {
-        width: 100%;
-      }
-    }
-  }
-`;
+      "& button": {
+        width: "100%",
+      },
+    },
+  },
+}));
 
-const FiltersCard = styled.div`
-  background: ${theme.backgroundCard};
-  border: 1px solid ${theme.borderLight};
-  border-radius: ${theme.radius2xl};
-  padding: ${theme.space6};
-  margin-bottom: ${theme.space8};
-  box-shadow: ${theme.shadowSm};
+const FiltersCard = styled("div")(({ theme }) => ({
+  background: theme.palette.background.paper,
+  border: `1px solid ${theme.palette.border.light}`,
+  borderRadius: theme.borderRadius["2xl"],
+  padding: theme.customSpacing.space6,
+  marginBottom: theme.customSpacing.space8,
+  boxShadow: theme.customShadows.sm,
 
-  & .filters-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: ${theme.space6};
+  "& .filters-header": {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: theme.customSpacing.space6,
 
-    & h3 {
-      margin: 0;
-      font-size: ${theme.fontLg};
-      font-weight: ${theme.fontSemibold};
-      color: ${theme.text};
-    }
+    "& h3": {
+      margin: 0,
+      fontSize: "1.125rem",
+      fontWeight: 600,
+      color: theme.palette.text.primary,
+    },
 
-    & .clear-btn {
-      background: transparent;
-      border: 1px solid ${theme.border};
-      color: ${theme.textSecondary};
-      padding: ${theme.space2} ${theme.space4};
-      border-radius: ${theme.radiusMd};
-      cursor: pointer;
-      font-size: ${theme.fontBase};
-      transition: all ${theme.transitionSlow};
+    "& .clear-btn": {
+      background: "transparent",
+      border: `1px solid ${theme.palette.border.main}`,
+      color: theme.palette.text.secondary,
+      padding: `${theme.customSpacing.space2} ${theme.customSpacing.space4}`,
+      borderRadius: theme.borderRadius.md,
+      cursor: "pointer",
+      fontSize: "0.875rem",
+      transition: theme.customTransitions.slow,
 
-      &:hover {
-        background: ${theme.borderLight};
-        border-color: ${theme.primary};
-        color: ${theme.primary};
-      }
-    }
-  }
+      "&:hover": {
+        background: theme.palette.border.light,
+        borderColor: theme.palette.primary.main,
+        color: theme.palette.primary.main,
+      },
+    },
+  },
 
-  & .filters-content {
-    display: flex;
-    flex-direction: column;
-    gap: ${theme.space8};
-  }
+  "& .filters-content": {
+    display: "flex",
+    flexDirection: "column",
+    gap: theme.customSpacing.space8,
+  },
 
-  @media (max-width: 768px) {
-    padding: ${theme.space4};
+  "@media (max-width: 768px)": {
+    padding: theme.customSpacing.space4,
 
-    & .filters-content {
-      gap: ${theme.space6};
-    }
-  }
-`;
+    "& .filters-content": {
+      gap: theme.customSpacing.space6,
+    },
+  },
+}));
 
-const FilterSection = styled.div`
-  & > label {
-    display: block;
-    font-weight: ${theme.fontSemibold};
-    color: ${theme.text};
-    margin-bottom: ${theme.space3};
-    font-size: ${theme.fontBase};
-  }
+const FilterSection = styled("div")(({ theme }) => ({
+  "& > label": {
+    display: "block",
+    fontWeight: 600,
+    color: theme.palette.text.primary,
+    marginBottom: theme.customSpacing.space3,
+    fontSize: "0.875rem",
+  },
 
-  & .filter-options {
-    display: flex;
-    gap: ${theme.space2};
-    flex-wrap: wrap;
+  "& .filter-options": {
+    display: "flex",
+    gap: theme.customSpacing.space2,
+    flexWrap: "wrap",
 
-    & button {
-      background: ${theme.backgroundCard};
-      border: 1px solid ${theme.border};
-      padding: ${theme.space2} ${theme.space4};
-      border-radius: ${theme.radiusMd};
-      cursor: pointer;
-      font-size: ${theme.fontBase};
-      transition: all ${theme.transitionSlow};
-      color: ${theme.text};
+    "& button": {
+      background: theme.palette.background.paper,
+      border: `1px solid ${theme.palette.border.main}`,
+      padding: `${theme.customSpacing.space2} ${theme.customSpacing.space4}`,
+      borderRadius: theme.borderRadius.md,
+      cursor: "pointer",
+      fontSize: "0.875rem",
+      transition: theme.customTransitions.slow,
+      color: theme.palette.text.primary,
 
-      &:hover {
-        border-color: ${theme.primary};
-        background: ${theme.primaryLight};
-      }
+      "&:hover": {
+        borderColor: theme.palette.primary.main,
+        background: theme.palette.primary.light,
+      },
 
-      &.active {
-        background-color: ${theme.primary};
-        color: white;
-        border-color: ${theme.primary};
-      }
-    }
-  }
+      "&.active": {
+        backgroundColor: theme.palette.primary.main,
+        color: "white",
+        borderColor: theme.palette.primary.main,
+      },
+    },
+  },
 
-  & .price-inputs {
-    display: flex;
-    flex-direction: column;
-    gap: ${theme.space2};
-    padding: 0 ${theme.space2};
+  "& .price-inputs": {
+    display: "flex",
+    flexDirection: "column",
+    gap: theme.customSpacing.space2,
+    padding: `0 ${theme.customSpacing.space2}`,
 
-    & .price-values {
-      display: flex;
-      justify-content: space-between;
-      color: ${theme.textSecondary};
-      font-size: ${theme.fontSm};
-      font-weight: ${theme.fontMedium};
-    }
-  }
+    "& .price-values": {
+      display: "flex",
+      justifyContent: "space-between",
+      color: theme.palette.text.secondary,
+      fontSize: "0.75rem",
+      fontWeight: 500,
+    },
+  },
 
-  & .airline-options {
-    display: flex;
-    flex-direction: column;
-    gap: ${theme.space3};
-    max-height: 200px;
-    overflow-y: auto;
+  "& .airline-options": {
+    display: "flex",
+    flexDirection: "column",
+    gap: theme.customSpacing.space3,
+    maxHeight: "200px",
+    overflowY: "auto",
 
-    & .checkbox-label {
-      display: flex;
-      align-items: center;
-      gap: ${theme.space2};
-      cursor: pointer;
-      font-size: ${theme.fontBase};
-      color: ${theme.text};
+    "& .checkbox-label": {
+      display: "flex",
+      alignItems: "center",
+      gap: theme.customSpacing.space2,
+      cursor: "pointer",
+      fontSize: "0.875rem",
+      color: theme.palette.text.primary,
 
-      & input[type="checkbox"] {
-        width: 18px;
-        height: 18px;
-        cursor: pointer;
-        accent-color: var(--primary);
-      }
+      "& input[type='checkbox']": {
+        width: "18px",
+        height: "18px",
+        cursor: "pointer",
+        accentColor: theme.palette.primary.main,
+      },
 
-      &:hover {
-        color: ${theme.primary};
-      }
-    }
-  }
+      "&:hover": {
+        color: theme.palette.primary.main,
+      },
+    },
+  },
 
-  @media (max-width: 768px) {
-    & .price-inputs {
-      flex-direction: column;
-      align-items: stretch;
+  "@media (max-width: 768px)": {
+    "& .price-inputs": {
+      flexDirection: "column",
+      alignItems: "stretch",
 
-      & .separator {
-        display: none;
-      }
-    }
-  }
-`;
+      "& .separator": {
+        display: "none",
+      },
+    },
+  },
+}));
+
 

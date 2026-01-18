@@ -3,9 +3,6 @@ import { getTotalDuration, getFlightPrice } from "@/utils/flightUtils";
 
 export type SortOption = "best" | "price_high" | "fastest";
 
-/**
- * Sorts flights based on the specified sort option
- */
 export const sortFlights = (
   flights: FlightOffer[],
   sortBy: SortOption

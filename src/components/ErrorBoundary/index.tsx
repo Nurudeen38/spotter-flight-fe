@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import React, { Component, type ReactNode } from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 interface Props {
   children: ReactNode;
@@ -12,28 +12,28 @@ interface State {
   error: Error | null;
 }
 
-const ErrorContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 400px;
-  padding: 2rem;
-  text-align: center;
-`;
+const ErrorContainer = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: "400px",
+  padding: "2rem",
+  textAlign: "center",
+});
 
-const ErrorTitle = styled.h2`
-  font-size: 24px;
-  color: #111827;
-  margin-bottom: 1rem;
-`;
+const ErrorTitle = styled("h2")(({ theme }) => ({
+  fontSize: "24px",
+  color: theme.palette.text.primary,
+  marginBottom: "1rem",
+}));
 
-const ErrorMessage = styled.p`
-  font-size: 16px;
-  color: #6b7280;
-  margin-bottom: 2rem;
-  max-width: 600px;
-`;
+const ErrorMessage = styled("p")(({ theme }) => ({
+  fontSize: "16px",
+  color: theme.palette.text.secondary,
+  marginBottom: "2rem",
+  maxWidth: "600px",
+}));
 
 /**
  * Error Boundary component to catch and handle React errors
@@ -77,4 +77,5 @@ export class ErrorBoundary extends Component<Props, State> {
     return this.props.children;
   }
 }
+
 

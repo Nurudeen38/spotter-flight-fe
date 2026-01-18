@@ -1,6 +1,5 @@
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import { InputWrapper } from "@/components/atoms/Input";
-import { theme } from "@/utils";
 import { Minus, PlusIcon } from "lucide-react";
 
 interface IProps {
@@ -15,7 +14,7 @@ const InputNumber = ({ label, error, value, onChange }: IProps) => {
     <Wrapper className="input-wrapper">
       <label>{label}</label>
       <div className="buttons">
-        <button  type="button" onClick={() => onChange(value - 1)} disabled={value === 1}>
+        <button type="button" onClick={() => onChange(value - 1)} disabled={value === 1}>
           <Minus />
         </button>
         <span>{value}</span>
@@ -30,37 +29,38 @@ const InputNumber = ({ label, error, value, onChange }: IProps) => {
 
 export { InputNumber };
 
-const Wrapper = styled(InputWrapper)`
-  & .buttons {
-    display: flex;
-    gap: 14px;
-    align-items: center;
+const Wrapper = styled(InputWrapper)(({ theme }) => ({
+  "& .buttons": {
+    display: "flex",
+    gap: "14px",
+    alignItems: "center",
 
-    & button {
-      background: #e8effc;
-      border: none;
-      color: ${theme.primary};
-      height: 44px;
-      width: 44px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      justify-content: center;
+    "& button": {
+      background: theme.palette.primary.light,
+      border: "none",
+      color: theme.palette.primary.main,
+      height: "44px",
+      width: "44px",
+      borderRadius: "10px",
+      display: "flex",
+      alignItems: "center",
+      cursor: "pointer",
+      justifyContent: "center",
 
-      &:disabled {
-        background: #f1f1f1;
-        cursor: not-allowed;
-      }
-      &:hover {
-        border: 1px solid #225ce53b;
-        opacity: 0.8;
-      }
+      "&:disabled": {
+        background: theme.palette.border.light,
+        cursor: "not-allowed",
+      },
+      "&:hover": {
+        border: `1px solid ${theme.palette.primary.light}`,
+        opacity: 0.8,
+      },
 
-      & svg {
-        width: 16px;
-        height: 16px;
-      }
-    }
-  }
-`;
+      "& svg": {
+        width: "16px",
+        height: "16px",
+      },
+    },
+  },
+}));
+

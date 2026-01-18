@@ -1,92 +1,90 @@
-import styled from "styled-components";
-import { theme } from "@/utils";
+import { styled } from "@mui/material/styles";
 import { FORM_DEFAULTS, RESPONSIVE_BREAKPOINTS } from "@/constants";
-
 
 /**
  * Container for loading states with skeleton placeholders.
  */
-export const LoadingSkeleton = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+export const LoadingSkeleton = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
 
-  & .MuiSkeleton-pulse {
-    border-radius: ${theme.radiusLg};
-  }
-`;
+  "& .MuiSkeleton-pulse": {
+    borderRadius: theme.borderRadius.lg,
+  },
+}));
 
 /**
  * Empty state message display.
  */
-export const EmptyState = styled.div`
-  text-align: center;
-  font-size: ${theme.fontBase};
-  color: ${theme.textSecondary};
-  padding: ${theme.space12};
-`;
+export const EmptyState = styled("div")(({ theme }) => ({
+  textAlign: "center",
+  fontSize: "0.875rem",
+  color: theme.palette.text.secondary,
+  padding: theme.customSpacing.space12,
+}));
 
-export const FlexContainer = styled.div`
-  display: flex;
-  gap: ${FORM_DEFAULTS.GAP_LARGE};
-  align-items: center;
+export const FlexContainer = styled("div")({
+  display: "flex",
+  gap: FORM_DEFAULTS.GAP_LARGE,
+  alignItems: "center",
 
-  @media (max-width: ${RESPONSIVE_BREAKPOINTS.MOBILE}px) {
-    flex-direction: column;
-    gap: ${FORM_DEFAULTS.GAP_MEDIUM};
-  }
-`;
+  [`@media (max-width: ${RESPONSIVE_BREAKPOINTS.MOBILE}px)`]: {
+    flexDirection: "column",
+    gap: FORM_DEFAULTS.GAP_MEDIUM,
+  },
+});
 
-export const SwapButton = styled.div`
-  width: ${FORM_DEFAULTS.SWAP_SIZE}px;
-  height: ${FORM_DEFAULTS.SWAP_SIZE}px;
-  background: ${theme.blueLight};
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${theme.primary};
+export const SwapButton = styled("div")(({ theme }) => ({
+  width: `${FORM_DEFAULTS.SWAP_SIZE}px`,
+  height: `${FORM_DEFAULTS.SWAP_SIZE}px`,
+  background: theme.palette.secondary.light,
+  borderRadius: "50%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: theme.palette.primary.main,
 
-  & svg {
-    width: ${FORM_DEFAULTS.SWAP_ICON_SIZE}px;
-  }
-`;
+  "& svg": {
+    width: `${FORM_DEFAULTS.SWAP_ICON_SIZE}px`,
+  },
+}));
 
-export const FormCard = styled.form`
-  max-width: ${FORM_DEFAULTS.MAX_CARD_WIDTH}px;
-  margin: ${FORM_DEFAULTS.GAP_SMALL} auto;
-  display: flex;
-  flex-direction: column;
-  gap: ${FORM_DEFAULTS.GAP_SMALL};
+export const FormCard = styled("form")({
+  maxWidth: `${FORM_DEFAULTS.MAX_CARD_WIDTH}px`,
+  margin: `${FORM_DEFAULTS.GAP_SMALL} auto`,
+  display: "flex",
+  flexDirection: "column",
+  gap: FORM_DEFAULTS.GAP_SMALL,
 
-  & .radios {
-    justify-content: center;
-  }
+  "& .radios": {
+    justifyContent: "center",
+  },
 
-  & > button {
-    min-width: ${FORM_DEFAULTS.BUTTON_MIN_WIDTH}px;
-    margin: 0 auto;
-    min-height: ${FORM_DEFAULTS.BUTTON_MIN_HEIGHT}px;
-  }
+  "& > button": {
+    minWidth: `${FORM_DEFAULTS.BUTTON_MIN_WIDTH}px`,
+    margin: "0 auto",
+    minHeight: `${FORM_DEFAULTS.BUTTON_MIN_HEIGHT}px`,
+  },
 
-  @media (max-width: ${RESPONSIVE_BREAKPOINTS.MOBILE}px) {
-    & > button {
-      min-width: 100%;
-      margin-top: ${FORM_DEFAULTS.GAP_SMALL};
-    }
-  }
-`;
+  [`@media (max-width: ${RESPONSIVE_BREAKPOINTS.MOBILE}px)`]: {
+    "& > button": {
+      minWidth: "100%",
+      marginTop: FORM_DEFAULTS.GAP_SMALL,
+    },
+  },
+});
 
-export const PageWrapper = styled.div`
-  max-width: ${RESPONSIVE_BREAKPOINTS.DESKTOP}px;
-  margin: 0 auto;
-  padding: 20px;
+export const PageWrapper = styled("div")({
+  maxWidth: `${RESPONSIVE_BREAKPOINTS.DESKTOP}px`,
+  margin: "0 auto",
+  padding: "20px",
 
-  @media (max-width: ${RESPONSIVE_BREAKPOINTS.TABLET}px) {
-    padding: 15px;
-  }
+  [`@media (max-width: ${RESPONSIVE_BREAKPOINTS.TABLET}px)`]: {
+    padding: "15px",
+  },
 
-  @media (max-width: ${RESPONSIVE_BREAKPOINTS.MOBILE}px) {
-    padding: 10px;
-  }
-`;
+  [`@media (max-width: ${RESPONSIVE_BREAKPOINTS.MOBILE}px)`]: {
+    padding: "10px",
+  },
+});

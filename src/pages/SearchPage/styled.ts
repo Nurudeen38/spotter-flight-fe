@@ -1,303 +1,293 @@
-import styled from "styled-components";
-import { theme } from "@/utils";
+import { styled } from "@mui/material/styles";
+import { Pagination } from "@mui/material";
 
-/**
- * SearchPage Styled Components
- * 
- */
+export const PageWrapper = styled("div")(({ theme }) => ({
+  maxWidth: "1000px",
+  margin: "0 auto",
+  padding: theme.customSpacing.space8,
 
-// ============================================================================
-// Layout Components
-// ============================================================================
+  "@media (max-width: 768px)": {
+    padding: theme.customSpacing.space4,
+  },
+}));
 
-export const PageWrapper = styled.div`
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: ${theme.space8};
+export const HeroSection = styled("section")(({ theme }) => ({
+  marginBottom: theme.customSpacing.space8,
+}));
 
-  @media (max-width: 768px) {
-    padding: ${theme.space4};
-  }
-`;
-
-export const HeroSection = styled.section`
-  margin-bottom: ${theme.space8};
-`;
-
-export const ResultsSection = styled.section``;
+export const ResultsSection = styled("section")({});
 
 // ============================================================================
 // Hero Typography
 // ============================================================================
 
-export const Tagline = styled.p`
-  font-size: ${theme.fontSm};
-  font-weight: ${theme.fontMedium};
-  color: ${theme.textMuted};
-  margin-bottom: ${theme.space2};
-`;
+export const Tagline = styled("p")(({ theme }) => ({
+  fontSize: "0.75rem",
+  fontWeight: 500,
+  color: theme.palette.text.muted,
+  marginBottom: theme.customSpacing.space2,
+}));
 
-export const Title = styled.h1`
-  font-size: ${theme.font3xl};
-  font-weight: ${theme.fontBold};
-  color: ${theme.text};
-  margin-bottom: ${theme.space2};
-  line-height: 1.2;
+export const Title = styled("h1")(({ theme }) => ({
+  fontSize: "1.75rem",
+  fontWeight: 700,
+  color: theme.palette.text.primary,
+  marginBottom: theme.customSpacing.space2,
+  lineHeight: 1.2,
 
-  @media (max-width: 575px) {
-    font-size: ${theme.fontXl};
-  }
-`;
+  "@media (max-width: 575px)": {
+    fontSize: "1.25rem",
+  },
+}));
 
-export const Description = styled.p`
-  font-size: ${theme.fontBase};
-  color: ${theme.textSecondary};
-  margin-bottom: ${theme.space6};
-  max-width: 600px;
-`;
+export const Description = styled("p")(({ theme }) => ({
+  fontSize: "0.875rem",
+  color: theme.palette.text.secondary,
+  marginBottom: theme.customSpacing.space6,
+  maxWidth: "600px",
+}));
 
 // ============================================================================
 // Search Form Components
 // ============================================================================
 
-export const SearchCard = styled.form`
-  margin-bottom: ${theme.space8};
-  
-  & .radios {
-    margin-bottom: ${theme.space4};
-  }
-`;
+export const SearchCard = styled("form")(({ theme }) => ({
+  marginBottom: theme.customSpacing.space8,
 
-export const FormGrid = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${theme.space4};
-`;
+  "& .radios": {
+    marginBottom: theme.customSpacing.space4,
+  },
+}));
 
-export const LocationInputs = styled.div`
-  display: flex;
-  gap: ${theme.space4};
-  align-items: flex-end;
+export const FormGrid = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.customSpacing.space4,
+}));
 
-  & > .input-wrapper {
-    flex: 1;
-  }
+export const LocationInputs = styled("div")(({ theme }) => ({
+  display: "flex",
+  gap: theme.customSpacing.space4,
+  alignItems: "flex-end",
 
-  @media (max-width: 575px) {
-    flex-direction: column;
-    align-items: stretch;
-  }
-`;
+  "& > .input-wrapper": {
+    flex: 1,
+  },
 
-export const SwapButton = styled.button`
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  background: ${theme.primaryLight};
-  border: none;
-  border-radius: ${theme.radiusFull};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${theme.primary};
-  cursor: pointer;
-  transition: all ${theme.transitionBase};
-  margin-bottom: 4px;
+  "@media (max-width: 575px)": {
+    flexDirection: "column",
+    alignItems: "stretch",
+  },
+}));
 
-  &:hover {
-    background: ${theme.primary};
-    color: white;
-    transform: rotate(180deg);
-  }
+export const SwapButton = styled("button")(({ theme }) => ({
+  width: "40px",
+  height: "40px",
+  minWidth: "40px",
+  background: theme.palette.primary.light,
+  border: "none",
+  borderRadius: theme.borderRadius.full,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: theme.palette.primary.main,
+  cursor: "pointer",
+  transition: theme.customTransitions.base,
+  marginBottom: "4px",
 
-  @media (max-width: 575px) {
-    align-self: center;
-    margin: 0;
-  }
-`;
+  "&:hover": {
+    background: theme.palette.primary.main,
+    color: "white",
+    transform: "rotate(180deg)",
+  },
 
-export const DateInputs = styled.div`
-  display: flex;
-  gap: ${theme.space4};
+  "@media (max-width: 575px)": {
+    alignSelf: "center",
+    margin: 0,
+  },
+}));
+
+export const DateInputs = styled("div")(({ theme }) => ({
+  display: "flex",
+  gap: theme.customSpacing.space4,
 
 
-  & > * {
-    flex: 1;
-  }
+  "& > *": {
+    flex: 1,
+  },
 
-  
-  & > * > div {
-    flex: 1;
-      border-radius: ${theme.radiusLg};
-  }
 
-  @media (max-width: 575px) {
-    flex-direction: column;
-  }
-`;
+  "& > * > div": {
+    flex: 1,
+    borderRadius: theme.borderRadius.lg,
+  },
 
-export const OtherInputs = styled.div`
-  display: flex;
-  gap: ${theme.space4};
+  "@media (max-width: 575px)": {
+    flexDirection: "column",
+  },
+}));
 
-  & > * {
-    flex: 1;
-  }
+export const OtherInputs = styled("div")(({ theme }) => ({
+  display: "flex",
+  gap: theme.customSpacing.space4,
 
-  @media (max-width: 575px) {
-    flex-direction: column;
-  }
-`;
+  "& > *": {
+    flex: 1,
+  },
 
-export const SelectWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  "@media (max-width: 575px)": {
+    flexDirection: "column",
+  },
+}));
 
-  & label {
-    color: ${theme.textSecondary};
-    text-transform: uppercase;
-    font-size: ${theme.fontSm};
-    font-weight: ${theme.fontMedium};
-    margin-bottom: ${theme.space2};
-  }
+export const SelectWrapper = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
 
-  & .MuiOutlinedInput-root {
-    border-radius: ${theme.radiusLg};
-    background: ${theme.inputBackground};
+  "& label": {
+    color: theme.palette.text.secondary,
+    textTransform: "uppercase",
+    fontSize: "0.75rem",
+    fontWeight: 500,
+    marginBottom: theme.customSpacing.space2,
+  },
 
-    &:hover {
-      & .MuiOutlinedInput-notchedOutline {
-        border-color: ${theme.borderFocus};
-      }
-    }
-  }
+  "& .MuiOutlinedInput-root": {
+    borderRadius: theme.borderRadius.lg,
+    background: theme.palette.background.input,
 
-  & .MuiSelect-select {
-    padding: 10px 16px;
-  }
+    "&:hover": {
+      "& .MuiOutlinedInput-notchedOutline": {
+        borderColor: theme.palette.border.focus,
+      },
+    },
+  },
 
-  & fieldset {
-    border: 2px solid ${theme.border};
-  }
-`;
+  "& .MuiSelect-select": {
+    padding: "10px 16px",
+  },
 
-export const SearchButton = styled.button`
-  width: 100%;
-  margin: ${theme.space6} auto 0;
-  padding: 0.875rem ${theme.space6};
-  background: ${theme.primary};
-  color: #134e4a;
-  border: none;
-  border-radius: ${theme.radiusLg};
-  font-size: ${theme.fontBase};
-  font-weight: ${theme.fontSemibold};
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: ${theme.space2};
-  transition: all ${theme.transitionBase};
+  "& fieldset": {
+    border: `2px solid ${theme.palette.border.main}`,
+  },
+}));
 
-  &:hover {
-    background: ${theme.primaryHover};
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(15, 181, 174, 0.3);
-  }
+export const SearchButton = styled("button")(({ theme }) => ({
+  width: "100%",
+  margin: `${theme.customSpacing.space6} auto 0`,
+  padding: `0.875rem ${theme.customSpacing.space6}`,
+  background: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+  border: "none",
+  borderRadius: theme.borderRadius.lg,
+  fontSize: "0.875rem",
+  fontWeight: 600,
+  cursor: "pointer",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: theme.customSpacing.space2,
+  transition: theme.customTransitions.base,
 
-  &:active {
-    transform: scale(0.98);
-  }
+  "&:hover": {
+    background: theme.palette.primary.dark,
+    transform: "translateY(-1px)",
+    boxShadow: "0 4px 12px rgba(15, 181, 174, 0.3)",
+  },
 
-  &:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-  }
+  "&:active": {
+    transform: "scale(0.98)",
+  },
 
-  @media (max-width: 575px) {
-    max-width: 100%;
-  }
-`;
+  "&:disabled": {
+    opacity: 0.7,
+    cursor: "not-allowed",
+    transform: "none",
+    boxShadow: "none",
+  },
 
-export const EmptyStateWrapper = styled.div`
-  text-align: center;
-  padding: ${theme.space16} ${theme.space8};
-  background: ${theme.backgroundCard};
-  border: 1px solid ${theme.borderLight};
-  border-radius: ${theme.radiusXl};
-`;
+  "@media (max-width: 575px)": {
+    maxWidth: "100%",
+  },
+}));
 
-export const EmptyIcon = styled.div`
-  width: 80px;
-  height: 80px;
-  margin: 0 auto ${theme.space6};
-  background: ${theme.primaryLight};
-  border-radius: ${theme.radiusFull};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${theme.primary};
-`;
+export const EmptyStateWrapper = styled("div")(({ theme }) => ({
+  textAlign: "center",
+  padding: `${theme.customSpacing.space16} ${theme.customSpacing.space8}`,
+  background: theme.palette.background.paper,
+  border: `1px solid ${theme.palette.border.light}`,
+  borderRadius: theme.borderRadius.xl,
+}));
 
-export const EmptyTitle = styled.h2`
-  font-size: ${theme.fontXl};
-  font-weight: ${theme.fontSemibold};
-  color: ${theme.text};
-  margin-bottom: ${theme.space2};
-`;
+export const EmptyIcon = styled("div")(({ theme }) => ({
+  width: "80px",
+  height: "80px",
+  margin: `0 auto ${theme.customSpacing.space6}`,
+  background: theme.palette.primary.light,
+  borderRadius: theme.borderRadius.full,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: theme.palette.primary.main,
+}));
 
-export const EmptyDescription = styled.p`
-  font-size: ${theme.fontBase};
-  color: ${theme.textSecondary};
-  max-width: 400px;
-  margin: 0 auto;
-`;
+export const EmptyTitle = styled("h2")(({ theme }) => ({
+  fontSize: "1.25rem",
+  fontWeight: 600,
+  color: theme.palette.text.primary,
+  marginBottom: theme.customSpacing.space2,
+}));
 
-export const ResultsInfo = styled.div`
-  font-size: ${theme.fontBase};
-  color: ${theme.textSecondary};
-  margin-bottom: ${theme.space4};
-  font-weight: ${theme.fontMedium};
-`;
+export const EmptyDescription = styled("p")(({ theme }) => ({
+  fontSize: "0.875rem",
+  color: theme.palette.text.secondary,
+  maxWidth: "400px",
+  margin: "0 auto",
+}));
 
-export const PaginationContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: ${theme.space8};
-  margin-bottom: ${theme.space8};
-  padding: ${theme.space4};
-`;
+export const ResultsInfo = styled("div")(({ theme }) => ({
+  fontSize: "0.875rem",
+  color: theme.palette.text.secondary,
+  marginBottom: theme.customSpacing.space4,
+  fontWeight: 500,
+}));
 
-import { Pagination } from "@mui/material";
+export const PaginationContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  marginTop: theme.customSpacing.space8,
+  marginBottom: theme.customSpacing.space8,
+  padding: theme.customSpacing.space4,
+}));
 
-export const StyledPagination = styled(Pagination)`
-  & .MuiPaginationItem-root {
-    color: ${theme.text};
-    border-color: ${theme.border};
-    border-radius: ${theme.radiusLg};
-    font-family: inherit;
-    font-weight: ${theme.fontMedium};
-    transition: all ${theme.transitionBase};
-    
-    &:hover {
-      background-color: ${theme.backgroundCard};
-      border-color: ${theme.primary};
-      color: ${theme.primary};
-    }
-    
-    &.Mui-selected {
-      background-color: ${theme.primary} !important;
-      color: white;
-      border-color: ${theme.primary};
-      
-      &:hover {
-        background-color: ${theme.primaryHover} !important;
-      }
-    }
+export const StyledPagination = styled(Pagination)(({ theme }) => ({
+  "& .MuiPaginationItem-root": {
+    color: theme.palette.text.primary,
+    borderColor: theme.palette.border.main,
+    borderRadius: theme.borderRadius.lg,
+    fontFamily: "inherit",
+    fontWeight: 500,
+    transition: theme.customTransitions.base,
 
-    &.MuiPaginationItem-ellipsis {
-      color: ${theme.textSecondary};
-    }
-  }
-`;
+    "&:hover": {
+      backgroundColor: theme.palette.background.paper,
+      borderColor: theme.palette.primary.main,
+      color: theme.palette.primary.main,
+    },
+
+    "&.Mui-selected": {
+      backgroundColor: `${theme.palette.primary.main} !important`,
+      color: "white",
+      borderColor: theme.palette.primary.main,
+
+      "&:hover": {
+        backgroundColor: `${theme.palette.primary.dark} !important`,
+      },
+    },
+
+    "&.MuiPaginationItem-ellipsis": {
+      color: theme.palette.text.secondary,
+    },
+  },
+}));
+

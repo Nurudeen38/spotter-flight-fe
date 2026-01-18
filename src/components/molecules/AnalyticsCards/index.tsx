@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import { Plane, Filter, Building2 } from "lucide-react";
 
 interface AnalyticsCardsProps {
@@ -54,51 +54,52 @@ const AnalyticsCards = ({
 
 export { AnalyticsCards };
 
-const CardsContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-  
-  @media (max-width: 575px) {
-    flex-wrap: wrap;
-  }
-`;
+const CardsContainer = styled("div")({
+    display: "flex",
+    gap: "1rem",
 
-const Card = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: var(--background-card);
-  border: 1px solid var(--border-light);
-  border-radius: 10px;
-  min-width: 100px;
-`;
+    "@media (max-width: 575px)": {
+        flexWrap: "wrap",
+    },
+});
 
-const CardIcon = styled.div`
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: var(--primary-light);
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+const Card = styled("div")(({ theme }) => ({
+    display: "flex",
+    alignItems: "center",
+    gap: "0.75rem",
+    padding: "0.75rem 1rem",
+    background: theme.palette.background.paper,
+    border: `1px solid ${theme.palette.border.light}`,
+    borderRadius: "10px",
+    minWidth: "100px",
+}));
 
-const CardContent = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+const CardIcon = styled("div")(({ theme }) => ({
+    width: "32px",
+    height: "32px",
+    borderRadius: "8px",
+    background: theme.palette.primary.light,
+    color: theme.palette.primary.main,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+}));
 
-const CardValue = styled.span`
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.2;
-`;
+const CardContent = styled("div")({
+    display: "flex",
+    flexDirection: "column",
+});
 
-const CardLabel = styled.span`
-  font-size: 12px;
-  color: var(--text-muted);
-  font-weight: 500;
-`;
+const CardValue = styled("span")(({ theme }) => ({
+    fontSize: "18px",
+    fontWeight: 600,
+    color: theme.palette.text.primary,
+    lineHeight: 1.2,
+}));
+
+const CardLabel = styled("span")(({ theme }) => ({
+    fontSize: "12px",
+    color: theme.palette.text.muted,
+    fontWeight: 500,
+}));
+

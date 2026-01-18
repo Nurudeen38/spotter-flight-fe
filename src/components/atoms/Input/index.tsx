@@ -1,6 +1,5 @@
 import { Autocomplete, CircularProgress, TextField } from "@mui/material";
-import styled from "styled-components";
-import { theme } from "@/utils";
+import { styled } from "@mui/material/styles";
 import type { City } from "@/types";
 import { Fragment, useState } from "react";
 import { useCitySearch, useTopCities, useDebounceInput } from "@/hooks";
@@ -91,103 +90,103 @@ const Input = ({ label, error, onSelect, value, placeholder }: IProps) => {
 
 export { Input };
 
-export const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+export const InputWrapper = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
 
-  & label {
-    color: ${theme.textSecondary};
-    text-transform: uppercase;
-    font-size: ${theme.fontSm};
-    font-weight: ${theme.fontMedium};
-    margin-bottom: ${theme.space2};
-  }
-  & .MuiAutocomplete-inputRoot {
-    padding: 1px 14px;
-    background: ${theme.inputBackground};
-  }
+  "& label": {
+    color: theme.palette.text.secondary,
+    textTransform: "uppercase",
+    fontSize: "0.75rem",
+    fontWeight: 500,
+    marginBottom: theme.customSpacing.space2,
+  },
+  "& .MuiAutocomplete-inputRoot": {
+    padding: "1px 14px",
+    background: theme.palette.background.input,
+  },
 
-  & .MuiPickersInputBase-adornedEnd:hover {
-    & fieldset {
-      border-color: ${theme.borderFocus};
-    }
-  }
-  & .MuiInputBase-formControl,
-  .MuiPickersOutlinedInput-root {
-    border-radius: ${theme.radiusLg};
+  "& .MuiPickersInputBase-adornedEnd:hover": {
+    "& fieldset": {
+      borderColor: theme.palette.border.focus,
+    },
+  },
+  "& .MuiInputBase-formControl, .MuiPickersOutlinedInput-root": {
+    borderRadius: theme.borderRadius.lg,
 
-    &:hover {
-      & .MuiOutlinedInput-notchedOutline {
-        border-color: ${theme.borderFocus};
-      }
-    }
-  }
+    "&:hover": {
+      "& .MuiOutlinedInput-notchedOutline": {
+        borderColor: theme.palette.border.focus,
+      },
+    },
+  },
 
-  & .MuiPickersSectionList-root {
-    padding: 10px 3px;
-  }
+  "& .MuiPickersSectionList-root": {
+    padding: "10px 3px",
+  },
 
-  & .MuiPickersTextField-root {
-    background: ${theme.inputBackground};
-  }
+  "& .MuiPickersTextField-root": {
+    background: theme.palette.background.input,
+  },
 
-  & input {
-    padding: 10px 16px;
-  }
+  "& input": {
+    padding: "10px 16px",
+  },
 
-  & fieldset {
-    border: 2px solid ${theme.border};
-  }
+  "& fieldset": {
+    border: `2px solid ${theme.palette.border.main}`,
+  },
 
-  & .error {
-    color: ${theme.error};
-    font-size: ${theme.fontSm};
-    margin-top: 5px;
-  }
-`;
+  "& .error": {
+    color: theme.palette.error.main,
+    fontSize: "0.75rem",
+    marginTop: "5px",
+  },
+}));
 
-const OptionWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${theme.space3};
-  width: 100%;
-`;
+const OptionWrapper = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: theme.customSpacing.space3,
+  width: "100%",
+}));
 
-const IataCodeCircle = styled.div<{ $isAirport: boolean }>`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: ${props => props.$isAirport ? theme.primaryLight : theme.backgroundCard};
-  color: ${props => props.$isAirport ? theme.primary : theme.textSecondary};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: ${theme.fontSemibold};
-  font-size: ${theme.fontSm};
-  flex-shrink: 0;
-  border: 1px solid ${props => props.$isAirport ? 'transparent' : theme.border};
-`;
+const IataCodeCircle = styled("div")<{ $isAirport: boolean }>(({ theme, $isAirport }) => ({
+  width: "40px",
+  height: "40px",
+  borderRadius: "50%",
+  backgroundColor: $isAirport ? theme.palette.primary.light : theme.palette.background.paper,
+  color: $isAirport ? theme.palette.primary.main : theme.palette.text.secondary,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontWeight: 600,
+  fontSize: "0.75rem",
+  flexShrink: 0,
+  border: `1px solid ${$isAirport ? 'transparent' : theme.palette.border.main}`,
+}));
 
-const OptionContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-`;
+const OptionContent = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  overflow: "hidden",
+});
 
-const OptionTitle = styled.span`
-  color: ${theme.text};
-  font-weight: ${theme.fontMedium};
-  font-size: ${theme.fontMd};
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
+const OptionTitle = styled("span")(({ theme }) => ({
+  color: theme.palette.text.primary,
+  fontWeight: 500,
+  fontSize: "1rem",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+}));
 
-const OptionSubtitle = styled.span`
-  color: ${theme.textSecondary};
-  font-size: ${theme.fontSm};
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
+const OptionSubtitle = styled("span")(({ theme }) => ({
+  color: theme.palette.text.secondary,
+  fontSize: "0.75rem",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+}));
+
 

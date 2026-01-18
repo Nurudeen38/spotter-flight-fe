@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "@/providers";
 
@@ -17,21 +17,22 @@ const ThemeToggle = () => {
 
 export { ThemeToggle };
 
-const ToggleButton = styled.button`
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  transition: all 0.2s ease;
+const ToggleButton = styled("button")(({ theme }) => ({
+  background: "transparent",
+  border: `1px solid ${theme.palette.border.main}`,
+  borderRadius: "8px",
+  padding: "8px",
+  cursor: "pointer",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: theme.palette.text.secondary,
+  transition: "all 0.2s ease",
 
-  &:hover {
-    background: var(--primary-light);
-    border-color: var(--primary);
-    color: var(--primary);
-  }
-`;
+  "&:hover": {
+    background: theme.palette.primary.light,
+    borderColor: theme.palette.primary.main,
+    color: theme.palette.primary.main,
+  },
+}));
+

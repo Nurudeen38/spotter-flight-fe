@@ -9,7 +9,6 @@ A simple and responsive clone of Google Flights built with React. This project a
 - **TypeScript** – Static type checking
 - **MUI (Material UI)** – Component library for UI elements
 - **MUI Date Picker** – For selecting travel dates
-- **Styled-Components** – CSS-in-JS for component styling
 - **Recharts** – For data visualization (Price Graph)
 - **React Hook Form** – For form state management
 - **Zod** – For schema validation
@@ -17,6 +16,8 @@ A simple and responsive clone of Google Flights built with React. This project a
 - **React Query** – For data fetching and caching
 - **Date-fns** – Date utility library
 - **Lucide React** – Icon library
+- **Vitest** – Unit testing framework
+- **React Testing Library** – Component testing utilities
 
 ## 🚀 Features
 
@@ -25,19 +26,33 @@ A simple and responsive clone of Google Flights built with React. This project a
 - **Real-time Price Graph**: Visual representation of flight prices over time.
 - **Analytics Dashboard**: View quick stats like cheapest flight, average price, and fastest route.
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices.
-- **Modern UI**: Clean interface using Material UI and custom styled-components.
+- **Modern UI**: Clean interface using Material UI.
 - **Form Validation**: Robust validation using Zod and React Hook Form.
+- **Dark Mode**: Supports light and dark themes.
 
 ## 📦 Installation
 
 ```bash
-yarn install
+pnpm install
 ```
 
 ## Start the development server
 
 ```bash
-yarn dev
+pnpm dev
+```
+
+## 🧪 Testing
+
+```bash
+# Run tests in watch mode
+pnpm test
+
+# Run tests with UI
+pnpm test:ui
+
+# Run tests once
+pnpm test:run
 ```
 
 ## 🌐 API Configuration
@@ -48,23 +63,23 @@ This project uses the Amadeus API for flight searches. Create a `.env` file in t
 
 ```txt
 src/
-├── assets/          # Static assets (images, icons)
 ├── components/      # Reusable UI components
 │   ├── atoms/       # Basic building blocks (Buttons, Inputs)
 │   ├── molecules/   # Simple groups of atoms (Cards, FormFields)
 │   ├── organisms/   # Complex UI sections (Navbar, Filters)
 │   └── shared/      # Shared styled components
 ├── constants/       # App constants and configuration
+├── context/         # React context definitions
 ├── hooks/           # Custom React hooks
-├── interfaces/      # Type definitions (Interfaces)
-├── Layout/          # Layout wrappers
+├── layout/          # Layout wrappers
 ├── pages/           # Route-level page components
 ├── providers/       # Context providers (Theme, QueryClient)
 ├── routes/          # Application routing configuration
 ├── schemas/         # Zod validation schemas
 ├── services/        # API services and axios setup
-├── styles/          # Global styles and theme setup
-├── types/           # Type definitions (Types)
+├── test/            # Test setup and utilities
+├── theme/           # Theme configuration and styles
+├── types/           # Type definitions
 ├── utils/           # Helper utility functions
 └── main.tsx         # Application entry point
 ```

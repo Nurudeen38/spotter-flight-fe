@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import {
   Controller,
   type Control,
@@ -42,50 +42,47 @@ const Radios = <T extends FieldValues>({ control, name, items }: IProps<T>) => {
 
 export { Radios };
 
-const ToggleContainer = styled.div`
-  display: flex;
-  gap: 0;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--background-elevated);
-  width: 100%;
-`;
+const ToggleContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  gap: 0,
+  borderRadius: "10px",
+  overflow: "hidden",
+  border: `1px solid ${theme.palette.border.main}`,
+  background: theme.palette.background.paper,
+  width: "100%",
+}));
 
-const ToggleButton = styled.button<{ $isActive: boolean }>`
-  flex: 1;
-  padding: 0.625rem 1.5rem;
-  font-size: 14px;
-  font-weight: 500;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 120px;
-  
-  background: ${({ $isActive }) => 
-    $isActive ? 'var(--primary)' : 'var(--background-elevated)'};
-  color: ${({ $isActive }) => 
-    $isActive ? 'var(--background, #0f0f23)' : 'var(--text-secondary)'};
-  
-  &:hover {
-    background: ${({ $isActive }) => 
-      $isActive ? 'var(--primary)' : 'var(--background-card)'};
-    color: ${({ $isActive }) => 
-      $isActive ? 'var(--background, #0f0f23)' : 'var(--text)'};
-  }
-  
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--primary);
-    z-index: 1;
-    position: relative;
-  }
-  
-  &:first-child {
-    border-radius: 9px 0 0 9px;
-  }
-  
-  &:last-child {
-    border-radius: 0 9px 9px 0;
-  }
-`;
+const ToggleButton = styled("button")<{ $isActive: boolean }>(({ theme, $isActive }) => ({
+  flex: 1,
+  padding: "0.625rem 1.5rem",
+  fontSize: "14px",
+  fontWeight: 500,
+  border: "none",
+  cursor: "pointer",
+  transition: "all 0.2s ease",
+  minWidth: "120px",
+
+  background: $isActive ? theme.palette.primary.main : theme.palette.background.paper,
+  color: $isActive ? theme.palette.background.default : theme.palette.text.secondary,
+
+  "&:hover": {
+    background: $isActive ? theme.palette.primary.main : theme.palette.background.paper,
+    color: $isActive ? theme.palette.background.default : theme.palette.text.primary,
+  },
+
+  "&:focus": {
+    outline: "none",
+    boxShadow: `0 0 0 2px ${theme.palette.primary.main}`,
+    zIndex: 1,
+    position: "relative",
+  },
+
+  "&:first-of-type": {
+    borderRadius: "9px 0 0 9px",
+  },
+
+  "&:last-of-type": {
+    borderRadius: "0 9px 9px 0",
+  },
+}));
+

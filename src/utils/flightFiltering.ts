@@ -1,19 +1,14 @@
 import type { FlightOffer, FlightFilters } from "@/types";
 import { getTotalStops, getPrimaryAirline, getFlightPrice } from "@/utils/flightUtils";
 
-/**
- * Filters flight offers based on provided filters
- */
 export const filterFlights = (
   flights: FlightOffer[],
   filters: FlightFilters
 ): FlightOffer[] => {
   let filtered = [...flights];
 
-  // Filter by stops
   if (filters.stops !== null) {
     if (filters.stops === 2) {
-      // 2+ stops means 2 or more
       filtered = filtered.filter((offer) => getTotalStops(offer) >= 2);
     } else {
       filtered = filtered.filter(
@@ -22,7 +17,6 @@ export const filterFlights = (
     }
   }
 
-  // Filter by price range
   if (filters.priceRange.min !== null) {
     filtered = filtered.filter(
       (offer) => getFlightPrice(offer) >= filters.priceRange.min!
@@ -34,7 +28,6 @@ export const filterFlights = (
     );
   }
 
-  // Filter by airlines
   if (filters.airlines.length > 0) {
     filtered = filtered.filter((offer) =>
       filters.airlines.includes(getPrimaryAirline(offer))
@@ -44,9 +37,6 @@ export const filterFlights = (
   return filtered;
 };
 
-/**
- * Calculates available airlines and price range from flight offers
- */
 export const calculateFlightMetadata = (flights: FlightOffer[]) => {
   if (flights.length === 0) {
     return { availableAirlines: [], priceRange: { min: 0, max: 0 } };

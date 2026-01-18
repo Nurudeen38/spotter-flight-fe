@@ -1,94 +1,94 @@
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import { AlertTriangle, RefreshCw } from "lucide-react";
-import { theme } from "@/utils";
 
-const ErrorWrapper = styled.div`
-  text-align: center;
-  padding: ${theme.space16} ${theme.space8};
-  background: ${theme.backgroundCard};
-  border: 1px solid ${theme.error};
-  border-radius: ${theme.radiusXl};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${theme.space4};
-`;
+const ErrorWrapper = styled("div")(({ theme }) => ({
+  textAlign: "center",
+  padding: `${theme.customSpacing.space16} ${theme.customSpacing.space8}`,
+  background: theme.palette.background.paper,
+  border: `1px solid ${theme.palette.error.main}`,
+  borderRadius: theme.borderRadius.xl,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: theme.customSpacing.space4,
+}));
 
-const ErrorIcon = styled.div`
-  width: 64px;
-  height: 64px;
-  background: rgba(239, 68, 68, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${theme.error};
-`;
+const ErrorIcon = styled("div")(({ theme }) => ({
+  width: "64px",
+  height: "64px",
+  background: "rgba(239, 68, 68, 0.1)",
+  borderRadius: "50%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: theme.palette.error.main,
+}));
 
-const ErrorTitle = styled.h3`
-  font-size: ${theme.fontLg};
-  font-weight: ${theme.fontSemibold};
-  color: ${theme.text};
-  margin: 0;
-`;
+const ErrorTitle = styled("h3")(({ theme }) => ({
+  fontSize: "1.125rem",
+  fontWeight: 600,
+  color: theme.palette.text.primary,
+  margin: 0,
+}));
 
-const ErrorMessage = styled.p`
-  color: ${theme.textSecondary};
-  max-width: 400px;
-  margin: 0;
-  font-size: ${theme.fontBase};
-`;
+const ErrorMessage = styled("p")(({ theme }) => ({
+  color: theme.palette.text.secondary,
+  maxWidth: "400px",
+  margin: 0,
+  fontSize: "0.875rem",
+}));
 
-const RetryButton = styled.button`
-  margin-top: ${theme.space4};
-  display: flex;
-  align-items: center;
-  gap: ${theme.space2};
-  padding: ${theme.space2} ${theme.space4};
-  background: ${theme.primary};
-  color: white;
-  border: none;
-  border-radius: ${theme.radiusMd};
-  cursor: pointer;
-  font-weight: ${theme.fontMedium};
-  transition: all ${theme.transitionBase};
-  font-size: ${theme.fontBase};
+const RetryButton = styled("button")(({ theme }) => ({
+  marginTop: theme.customSpacing.space4,
+  display: "flex",
+  alignItems: "center",
+  gap: theme.customSpacing.space2,
+  padding: `${theme.customSpacing.space2} ${theme.customSpacing.space4}`,
+  background: theme.palette.primary.main,
+  color: "white",
+  border: "none",
+  borderRadius: theme.borderRadius.md,
+  cursor: "pointer",
+  fontWeight: 500,
+  transition: theme.customTransitions.base,
+  fontSize: "0.875rem",
 
-  &:hover {
-    background: ${theme.primaryHover};
-    transform: translateY(-1px);
-    box-shadow: ${theme.shadowSm};
-  }
+  "&:hover": {
+    background: theme.palette.primary.dark,
+    transform: "translateY(-1px)",
+    boxShadow: theme.customShadows.sm,
+  },
 
-  &:active {
-    transform: translateY(0);
-  }
-`;
+  "&:active": {
+    transform: "translateY(0)",
+  },
+}));
 
 interface ErrorStateProps {
-    title?: string;
-    message?: string;
-    onRetry?: () => void;
+  title?: string;
+  message?: string;
+  onRetry?: () => void;
 }
 
 export const ErrorState = ({
-    title = "Something went wrong",
-    message = "We couldn't fetch the flight results. Please try again.",
-    onRetry
+  title = "Something went wrong",
+  message = "We couldn't fetch the flight results. Please try again.",
+  onRetry
 }: ErrorStateProps) => {
-    return (
-        <ErrorWrapper>
-            <ErrorIcon>
-                <AlertTriangle size={32} />
-            </ErrorIcon>
-            <ErrorTitle>{title}</ErrorTitle>
-            <ErrorMessage>{message}</ErrorMessage>
-            {onRetry && (
-                <RetryButton onClick={onRetry}>
-                    <RefreshCw size={16} />
-                    Try Again
-                </RetryButton>
-            )}
-        </ErrorWrapper>
-    );
+  return (
+    <ErrorWrapper>
+      <ErrorIcon>
+        <AlertTriangle size={32} />
+      </ErrorIcon>
+      <ErrorTitle>{title}</ErrorTitle>
+      <ErrorMessage>{message}</ErrorMessage>
+      {onRetry && (
+        <RetryButton onClick={onRetry}>
+          <RefreshCw size={16} />
+          Try Again
+        </RetryButton>
+      )}
+    </ErrorWrapper>
+  );
 };
+

@@ -43,7 +43,7 @@ export const flightFormSchema = z
     to: citySchema
       .nullable()
       .refine((val) => val && val.iataCode, "Please select destination city"),
-    departure: z.date().min(new Date(new Date().setHours(0, 0, 0, 0)), "Departure date must be in the future"),
+    departure: z.date({ required_error: "Departure date is required" }).min(new Date(new Date().setHours(0, 0, 0, 0)), "Departure date must be in the future"),
     return: z.date().optional().nullable(),
     passengers: z.number().min(1, "Required!"),
     travelClass: z.enum(["ECONOMY", "PREMIUM_ECONOMY", "BUSINESS", "FIRST"]),
