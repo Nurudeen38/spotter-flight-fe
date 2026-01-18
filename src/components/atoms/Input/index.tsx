@@ -41,6 +41,28 @@ const Input = ({ label, error, onSelect, value, placeholder }: IProps) => {
           }
         }}
         onChange={(_e, newVal) => onSelect(newVal)}
+        renderOption={(props, option) => {
+          const { key, ...otherProps } = props;
+          return (
+            <li key={key} {...otherProps}>
+              <OptionWrapper>
+                <IataCodeCircle $isAirport={option.subType === "AIRPORT"}>
+                  {option.iataCode}
+                </IataCodeCircle>
+                <OptionContent>
+                  <OptionTitle>
+                    {option.subType === "AIRPORT"
+                      ? (option.name.charAt(0).toUpperCase() + option.name.slice(1).toLowerCase() + " Airport")
+                      : (option.name.charAt(0).toUpperCase() + option.name.slice(1).toLowerCase())}
+                  </OptionTitle>
+                  <OptionSubtitle>
+                    {option.address.cityName.charAt(0).toUpperCase() + option.address.cityName.slice(1).toLowerCase()}, {option.address.countryName.charAt(0).toUpperCase() + option.address.countryName.slice(1).toLowerCase()}
+                  </OptionSubtitle>
+                </OptionContent>
+              </OptionWrapper>
+            </li>
+          );
+        }}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -122,5 +144,50 @@ export const InputWrapper = styled.div`
     font-size: ${theme.fontSm};
     margin-top: 5px;
   }
+`;
+
+const OptionWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${theme.space3};
+  width: 100%;
+`;
+
+const IataCodeCircle = styled.div<{ $isAirport: boolean }>`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: ${props => props.$isAirport ? theme.primaryLight : theme.backgroundCard};
+  color: ${props => props.$isAirport ? theme.primary : theme.textSecondary};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: ${theme.fontSemibold};
+  font-size: ${theme.fontSm};
+  flex-shrink: 0;
+  border: 1px solid ${props => props.$isAirport ? 'transparent' : theme.border};
+`;
+
+const OptionContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
+const OptionTitle = styled.span`
+  color: ${theme.text};
+  font-weight: ${theme.fontMedium};
+  font-size: ${theme.fontMd};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const OptionSubtitle = styled.span`
+  color: ${theme.textSecondary};
+  font-size: ${theme.fontSm};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 

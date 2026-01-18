@@ -26,7 +26,7 @@ import {
 import { buildFlightSearchUrl, buildSearchFormData, isValidFormData } from "../../utils";
 import { TRIP_TYPES, FORM_DEFAULTS, CABIN_CLASS_OPTIONS } from "../../constants";
 import type { FlightFormSchema } from "../../schemas/flightFormSchema";
-import type { FlightOffer } from "../../types";
+import type { City, FlightOffer } from "../../types";
 import {
     PageWrapper,
     HeroSection,
@@ -198,7 +198,7 @@ const SearchPage = () => {
                         <Input
                             label="From"
                             onSelect={(value) => setValue("from", value, { shouldDirty: true })}
-                            value={fromValue}
+                            value={fromValue as City}
                             error={errors.from?.message?.toString() || ""}
                             placeholder="Where from?"
                         />
@@ -208,7 +208,7 @@ const SearchPage = () => {
                         <Input
                             label="To"
                             onSelect={(value) => setValue("to", value, { shouldDirty: true })}
-                            value={toValue}
+                            value={toValue as City}
                             error={errors.to?.message?.toString() || ""}
                             placeholder="Where to?"
                         />

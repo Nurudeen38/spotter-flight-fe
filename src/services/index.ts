@@ -9,11 +9,11 @@ export const searchCities = (query: string) => {
     return Promise.resolve({ data: { data: [] } });
   }
 
-  return apiClient.get("/v1/reference-data/locations/cities", {
+  return apiClient.get("/v1/reference-data/locations", {
     params: {
       keyword: query,
-      max: MAX_CITY_RESULTS,
-      include: "AIRPORTS"
+      // max: MAX_CITY_RESULTS,
+      subType: "CITY,AIRPORT"
     },
   });
 };

@@ -31,19 +31,21 @@ export interface FlightOffer {
   lastTicketingDateTime: string;
   numberOfBookableSeats: number;
   itineraries: Itinerary[];
-  price: {
-    currency: string;
-    total: string;
-    base: string;
-    fees: { amount: string; type: string }[];
-    grandTotal: string;
-  };
+  price: Price;
   pricingOptions: {
     fareType: string[];
     includedCheckedBagsOnly: boolean;
   };
   validatingAirlineCodes: string[];
   travelerPricings: TravelerPricing[];
+}
+
+export interface Price {
+  currency: string;
+  total: string;
+  base: string;
+  fees: { amount: string; type: string }[];
+  grandTotal: string;
 }
 
 export interface Itinerary {
@@ -85,14 +87,30 @@ export interface City {
   type: string;
   subType: string;
   name: string;
+  detailedName: string;
+  id: string;
+  self: {
+    href: string;
+    methods: string[];
+  };
+  timeZoneOffset: string;
   iataCode: string;
+  geoCode: {
+    latitude: number;
+    longitude: number;
+  };
   address: {
+    cityName: string;
+    cityCode: string;
+    countryName: string;
     countryCode: string;
+    regionCode: string;
     stateCode?: string;
   };
-  geoCode?: {
-    latitude?: number;
-    longitude?: number;
+  analytics?: {
+    travelers: {
+      score: number;
+    };
   };
 }
 

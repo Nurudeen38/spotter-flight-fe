@@ -9,7 +9,7 @@
   --blue-light: rgba(33, 92, 229, 0.12);
   
   /* Text colors */
-  --text: #0f172a;
+  --text: #1e293b;
   --text-secondary: #64748b;
   --text-muted: #94a3b8;
   
@@ -183,4 +183,24 @@ button, input, select {
 :focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
+}
+
+/* MUI Autocomplete Override */
+.MuiAutocomplete-paper {
+  background-color: var(--background-card) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.MuiAutocomplete-option {
+  color: var(--text) !important;
+}
+
+.MuiAutocomplete-option[aria-selected="true"] {
+  background-color: var(--primary-light) !important;
+}
+
+.MuiAutocomplete-option.Mui-focused {
+  background-color: var(--primary-light) !important;
 }

@@ -107,13 +107,27 @@ export const createMinimalCity = (
 ): City => ({
   iataCode,
   name: iataCode,
+  detailedName: iataCode,
+  id: "minimal",
+  self: {
+    href: "",
+    methods: []
+  },
+  timeZoneOffset: "",
   type: "location",
   subType: "city",
   address: {
     countryCode: countryCode || "",
     stateCode: "",
+    cityName: "",
+    cityCode: "",
+    countryName: "",
+    regionCode: "",
   },
-  geoCode: {},
+  geoCode: {
+    latitude: 0,
+    longitude: 0,
+  },
 });
 
 /**

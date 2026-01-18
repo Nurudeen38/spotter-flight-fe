@@ -6,16 +6,32 @@ export type { TripType, CabinClass };
 export const citySchema = z.object({
   iataCode: z.string(),
   name: z.string(),
+  detailedName: z.string().optional(),
   type: z.string(),
   subType: z.string(),
+  id: z.string().optional(),
+  timeZoneOffset: z.string().optional(),
+  self: z.object({
+    href: z.string(),
+    methods: z.array(z.string())
+  }).optional(),
   address: z.object({
+    cityName: z.string().optional(),
+    cityCode: z.string().optional(),
+    countryName: z.string().optional(),
     countryCode: z.string(),
+    regionCode: z.string().optional(),
     stateCode: z.string().optional().or(z.literal("")),
   }),
   geoCode: z.object({
     latitude: z.number().optional(),
     longitude: z.number().optional(),
   }).optional(),
+  analytics: z.object({
+    travelers: z.object({
+      score: z.number()
+    })
+  }).optional()
 });
 
 export const flightFormSchema = z
