@@ -1,6 +1,6 @@
-import type { FlightSearchParams } from "../types";
-import { apiClient } from "../utils";
-import { MAX_FLIGHT_RESULTS, CITY_SEARCH_MIN_LENGTH, API_ENDPOINTS } from "../constants";
+import type { FlightSearchParams } from "@/types";
+import { apiClient } from "@/utils";
+import { MAX_FLIGHT_RESULTS, CITY_SEARCH_MIN_LENGTH, API_ENDPOINTS } from "@/constants";
 
 export const searchCities = (query: string) => {
   if (query.length < CITY_SEARCH_MIN_LENGTH) {

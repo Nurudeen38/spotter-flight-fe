@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { parseSearchParams } from "../utils/urlUtils";
+import { parseSearchParams } from "@/utils/urlUtils";
 
 export const useFlightSearchState = () => {
     const [searchParams, setSearchParams] = useSearchParams();

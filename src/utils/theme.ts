@@ -5,7 +5,7 @@
  * automatic theme switching between light and dark modes.
  * 
  * @example
- * import { theme } from '../utils';
+ * import { theme } from '@/utils';
  * 
  * const StyledButton = styled.button`
  *   background: ${theme.primary};

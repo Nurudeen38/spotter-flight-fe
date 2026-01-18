@@ -3,23 +3,23 @@ import { useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { parseISO, isValid } from "date-fns";
-import type { City } from "../types";
-import { useCitySearch } from "./useCitySearch";
+import type { City } from "@/types";
+import { useCitySearch } from "@/hooks/useCitySearch";
 import {
   extractFlightSearchParams,
   createMinimalCity,
-} from "../utils/urlUtils";
+} from "@/utils/urlUtils";
 import {
   flightFormSchema,
   type FlightFormSchema,
   type CabinClass,
-} from "../schemas/flightFormSchema";
+} from "@/schemas/flightFormSchema";
 import {
   DEFAULT_TRIP_TYPE,
   DEFAULT_PASSENGERS,
   DEFAULT_CABIN_CLASS,
   CABIN_CLASS,
-} from "../constants/flightConstants";
+} from "@/constants/flightConstants";
 
 /**
  * Custom hook for syncing flight form with URL parameters

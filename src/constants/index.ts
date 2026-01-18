@@ -24,7 +24,7 @@ export const FORM_DEFAULTS = {
   ITEMS_PER_PAGE: 10,
 };
 
-export * from "./flightConstants";
-export * from "./apiConstants";
+export * from "@/constants/flightConstants";
+export * from "@/constants/apiConstants";
 
 

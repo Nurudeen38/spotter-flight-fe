@@ -1,6 +1,6 @@
 import { useCallback } from "react";
-import { FORM_DEFAULTS } from "../constants";
-import type { FlightOffer } from "../types";
+import { FORM_DEFAULTS } from "@/constants";
+import type { FlightOffer } from "@/types";
 
 interface UseScrollToFlightProps {
     sortedFlights: FlightOffer[];

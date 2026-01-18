@@ -1,7 +1,7 @@
-import type { FlightOffer } from "../../../types";
-import { formatCurrency } from "../../../utils/formatUtils";
-import { getAirlineName, getAllConnectionAirports } from "../../../utils/flightUtils";
-import { FlightLeg } from "./FlightLeg";
+import type { FlightOffer } from "@/types";
+import { formatCurrency } from "@/utils/formatUtils";
+import { getAirlineName, getAllConnectionAirports } from "@/utils/flightUtils";
+import { FlightLeg } from "@/components/molecules/FlightCard/FlightLeg";
 import {
   Card,
   CardContent,
@@ -13,7 +13,7 @@ import {
   PricePerAdult,
   SelectButton,
   TaxNote
-} from "./styles";
+} from "@/components/molecules/FlightCard/styles";
 
 interface FlightCardProps {
   flightOffer: FlightOffer;

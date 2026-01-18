@@ -7,13 +7,13 @@ import {
     Input,
     InputNumber,
     Radios,
-} from "../../";
-import { useFlightFormUrlSync, useFlightSearchState } from "../../../hooks";
-import { useFlightSearchContext } from "../../../context/FlightSearchContext";
-import { buildFlightSearchUrl, buildSearchFormData, isValidFormData } from "../../../utils";
-import { TRIP_TYPES, CABIN_CLASS_OPTIONS } from "../../../constants";
-import type { FlightFormSchema } from "../../../schemas/flightFormSchema";
-import type { City } from "../../../types";
+} from "@/components";
+import { useFlightFormUrlSync, useFlightSearchState } from "@/hooks";
+import { useFlightSearchContext } from "@/context/FlightSearchContext";
+import { buildFlightSearchUrl, buildSearchFormData, isValidFormData } from "@/utils";
+import { TRIP_TYPES, CABIN_CLASS_OPTIONS } from "@/constants";
+import type { FlightFormSchema } from "@/schemas/flightFormSchema";
+import type { City } from "@/types";
 import {
     SearchCard,
     FormGrid,
@@ -23,7 +23,7 @@ import {
     OtherInputs,
     SelectWrapper,
     SearchButton,
-} from "../../../pages/SearchPage/styled";
+} from "@/pages/SearchPage/styled";
 
 export const SearchForm = () => {
     const { isLoading, isFetching } = useFlightSearchContext();

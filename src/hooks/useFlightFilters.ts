@@ -1,9 +1,9 @@
 import { useState, useMemo } from "react";
-import type { FlightOffer, FlightFilters } from "../types";
-import { filterFlights, calculateFlightMetadata } from "../utils/flightFiltering";
-import { DEFAULT_SORT_OPTION } from "../constants/flightConstants";
-import type { SortOption } from "../utils/flightSorting";
-import { sortFlights } from "../utils/flightSorting";
+import type { FlightOffer, FlightFilters } from "@/types";
+import { filterFlights, calculateFlightMetadata } from "@/utils/flightFiltering";
+import { DEFAULT_SORT_OPTION } from "@/constants/flightConstants";
+import type { SortOption } from "@/utils/flightSorting";
+import { sortFlights } from "@/utils/flightSorting";
 
 export interface UseFlightFiltersReturn {
   filters: FlightFilters;

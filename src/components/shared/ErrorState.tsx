@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { AlertTriangle, RefreshCw } from "lucide-react";
-import { theme } from "../../utils";
+import { theme } from "@/utils";
 
 const ErrorWrapper = styled.div`
   text-align: center;

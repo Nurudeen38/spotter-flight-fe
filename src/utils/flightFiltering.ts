@@ -1,5 +1,5 @@
-import type { FlightOffer, FlightFilters } from "../types";
-import { getTotalStops, getPrimaryAirline, getFlightPrice } from "./flightUtils";
+import type { FlightOffer, FlightFilters } from "@/types";
+import { getTotalStops, getPrimaryAirline, getFlightPrice } from "@/utils/flightUtils";
 
 /**
  * Filters flight offers based on provided filters

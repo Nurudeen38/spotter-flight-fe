@@ -1,6 +1,6 @@
-import type { FlightOffer, CarrierDictionary } from "../types";
-import { formatDateForUrl } from "./urlUtils";
-import type { FlightFormSchema } from "../schemas/flightFormSchema";
+import type { FlightOffer, CarrierDictionary } from "@/types";
+import { formatDateForUrl } from "@/utils/urlUtils";
+import type { FlightFormSchema } from "@/schemas/flightFormSchema";
 
 /**
  * Extracts the total price from a flight offer
@@ -14,13 +14,7 @@ export const getFlightPrice = (flight: FlightOffer): number => {
  */
 export const getTotalDuration = (flight: FlightOffer): number => {
   return flight.itineraries.reduce((totalMins, itinerary) => {
-    const durationMatch = itinerary.duration.match(/PT(\d+)H(\d+)M/);
-    if (durationMatch) {
-      const hours = parseInt(durationMatch[1]);
-      const minutes = parseInt(durationMatch[2]);
-      return totalMins + (hours * 60 + minutes);
-    }
-    return totalMins;
+    return totalMins + parseDurationToMinutes(itinerary.duration);
   }, 0);
 };
 

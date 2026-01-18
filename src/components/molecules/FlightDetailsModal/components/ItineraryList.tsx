@@ -1,7 +1,7 @@
 import { Clock, Info } from "lucide-react";
-import type { FlightOffer } from "../../../../types";
-import { formatDate, formatDurationFromMinutes, parseDurationToMinutes, formatTime } from "../../../../utils";
-import { getAirlineName, getAircraftName } from "../../../../utils/flightUtils";
+import type { FlightOffer } from "@/types";
+import { formatDate, formatDurationFromMinutes, parseDurationToMinutes, formatTime } from "@/utils";
+import { getAirlineName, getAircraftName } from "@/utils/flightUtils";
 import {
     ItinerarySection,
     SectionHeader,
@@ -12,7 +12,7 @@ import {
     DetailsColumn,
     InfoBadge,
     LayoverBanner,
-} from "../styles";
+} from "@/components/molecules/FlightDetailsModal/styles";
 
 interface ItineraryListProps {
     flightOffer: FlightOffer;

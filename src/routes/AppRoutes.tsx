@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SearchPage from "../pages/SearchPage";
-import NotFound from "../pages/NotFound";
-import { Layout } from "../Layout";
+import SearchPage from "@/pages/SearchPage";
+import NotFound from "@/pages/NotFound";
+import { Layout } from "@/layout";
 
 const AppRoutes = () => (
   <BrowserRouter>

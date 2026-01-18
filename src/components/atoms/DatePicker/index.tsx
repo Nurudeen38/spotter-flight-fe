@@ -7,7 +7,7 @@ import {
   type FieldValues,
   type Path,
 } from "react-hook-form";
-import { InputWrapper } from "../Input";
+import { InputWrapper } from "@/components/atoms/Input";
 
 interface IProps<T extends FieldValues> {
   control: Control<T>;

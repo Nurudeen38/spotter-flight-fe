@@ -8,9 +8,9 @@ import {
   ReferenceLine,
 } from "recharts";
 import { TrendingUp, TrendingDown, Info, Sparkles } from "lucide-react";
-import type { FlightOffer } from "../../../types";
-import { usePriceStats } from "../../../hooks/usePriceStats";
-import { formatCurrency, formatCompactCurrency } from "../../../utils/formatUtils";
+import type { FlightOffer } from "@/types";
+import { usePriceStats } from "@/hooks/usePriceStats";
+import { formatCurrency, formatCompactCurrency } from "@/utils/formatUtils";
 import {
   GraphContainer,
   Header,
@@ -27,7 +27,7 @@ import {
   ChartWrapper,
   DealsFooter,
   EmptyState,
-} from "./styles";
+} from "@/components/molecules/PriceGraph/styles";
 
 interface PriceGraphProps {
   flightOffers: FlightOffer[];

@@ -1,7 +1,7 @@
 import { Clock, AlertTriangle } from "lucide-react";
-import type { Itinerary } from "../../../types";
-import { formatTime, formatDate } from "../../../utils/formatUtils";
-import { formatDurationFromMinutes, parseDurationToMinutes, getAircraftName } from "../../../utils/flightUtils";
+import type { Itinerary } from "@/types";
+import { formatTime, formatDate } from "@/utils/formatUtils";
+import { formatDurationFromMinutes, parseDurationToMinutes, getAircraftName } from "@/utils/flightUtils";
 import {
     LegSection,
     LegLabel,
@@ -19,7 +19,7 @@ import {
     FlightSummary,
     SummaryItem,
     ClockIcon,
-} from "./styles";
+} from "@/components/molecules/FlightCard/styles";
 
 interface FlightLegProps {
     itinerary: Itinerary;

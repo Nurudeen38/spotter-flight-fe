@@ -1,4 +1,4 @@
-import type { FlightSearchParams, City } from "../types";
+import type { FlightSearchParams, City } from "@/types";
 import { format } from "date-fns";
 
 export interface FlightSearchUrlParams {

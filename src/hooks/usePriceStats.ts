@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import type { FlightOffer } from "../types";
-import { formatCurrency } from "../utils/formatUtils";
+import type { FlightOffer } from "@/types";
+import { formatCurrency } from "@/utils/formatUtils";
 
 export interface PriceDataPoint {
     priceRange: string;

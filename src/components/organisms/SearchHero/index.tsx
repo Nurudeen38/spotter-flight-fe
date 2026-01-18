@@ -1,6 +1,6 @@
-import { useFlightSearchContext } from "../../../context/FlightSearchContext";
-import { AnalyticsCards } from "../../molecules/AnalyticsCards";
-import { HeroSection, Tagline, Title, Description } from "../../../pages/SearchPage/styled";
+import { useFlightSearchContext } from "@/context/FlightSearchContext";
+import { AnalyticsCards } from "@/components/molecules/AnalyticsCards";
+import { HeroSection, Tagline, Title, Description } from "@/pages/SearchPage/styled";
 
 export const SearchHero = () => {
     const { stats, resultsRef } = useFlightSearchContext();

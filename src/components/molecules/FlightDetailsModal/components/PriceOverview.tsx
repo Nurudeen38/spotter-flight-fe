@@ -1,6 +1,6 @@
-import type { Price } from "../../../../types";
-import { formatCurrency } from "../../../../utils/formatUtils";
-import { PriceOverview as StyledPriceOverview, PriceInfo } from "../styles";
+import type { Price } from "@/types";
+import { formatCurrency } from "@/utils/formatUtils";
+import { PriceOverview as StyledPriceOverview, PriceInfo } from "@/components/molecules/FlightDetailsModal/styles";
 
 interface PriceOverviewProps {
     price: Price;

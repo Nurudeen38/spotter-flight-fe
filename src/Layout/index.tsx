@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import { Header } from "../components";
-import { ErrorBoundary } from "../components/ErrorBoundary";
+import { Header } from "@/components";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const Layout = () => {
   return (

@@ -1,6 +1,6 @@
-import { FlightSearchProvider } from "../../context/FlightSearchContext";
-import { SearchHero, SearchForm, SearchResults } from "../../components";
-import { PageWrapper } from "./styled";
+import { FlightSearchProvider } from "@/context/FlightSearchContext";
+import { SearchHero, SearchForm, SearchResults } from "@/components";
+import { PageWrapper } from "@/pages/SearchPage/styled";
 
 const SearchPage = () => {
     return (

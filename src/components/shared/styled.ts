@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../utils";
-import { FORM_DEFAULTS, RESPONSIVE_BREAKPOINTS } from "../../constants";
+import { theme } from "@/utils";
+import { FORM_DEFAULTS, RESPONSIVE_BREAKPOINTS } from "@/constants";
 
 
 /**

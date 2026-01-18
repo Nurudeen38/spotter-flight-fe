@@ -1,4 +1,4 @@
-import { createContext, useContext, useRef } from "react";
+import { createContext, useContext, useRef, useEffect } from "react";
 import type { ReactNode, RefObject } from "react";
 import {
     useFlightSearch,
@@ -6,9 +6,9 @@ import {
     usePagination,
     useFlightSearchState,
     useScrollToFlight,
-} from "../hooks";
-import { FORM_DEFAULTS } from "../constants";
-import type { FlightOffer, FlightFilters, SortOption } from "../types";
+} from "@/hooks";
+import { FORM_DEFAULTS } from "@/constants";
+import type { FlightOffer, FlightFilters, SortOption } from "@/types";
 
 interface FlightSearchContextType {
     // Search State
@@ -54,6 +54,13 @@ const FlightSearchContext = createContext<FlightSearchContextType | undefined>(u
 export const FlightSearchProvider = ({ children }: { children: ReactNode }) => {
     const { queryParams, shouldSearch, hasSearched } = useFlightSearchState();
     const resultsRef = useRef<HTMLDivElement>(null);
+
+    // Auto-scroll to results when search is initiated
+    useEffect(() => {
+        if (shouldSearch && resultsRef.current) {
+            resultsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    }, [shouldSearch]);
 
     // Fetch flights
     const { data, isLoading, isFetching, isError, refetch } = useFlightSearch(

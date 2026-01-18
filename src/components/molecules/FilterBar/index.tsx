@@ -2,11 +2,11 @@
 import { useState, useRef, useEffect } from "react";
 import { Slider } from "@mui/material";
 import styled from "styled-components";
-import { theme } from "../../../utils";
-import type { FlightFilters, CarrierDictionary } from "../../../types";
-import type { SortOption } from "../../../utils/flightSorting";
-import { SORT_OPTIONS } from "../../../constants";
-import { getAirlineName } from "../../../utils/flightUtils";
+import { theme } from "@/utils";
+import type { FlightFilters, CarrierDictionary } from "@/types";
+import type { SortOption } from "@/utils/flightSorting";
+import { SORT_OPTIONS } from "@/constants";
+import { getAirlineName } from "@/utils/flightUtils";
 
 interface FilterBarProps {
   onSortByChange: (sortBy: SortOption) => void;

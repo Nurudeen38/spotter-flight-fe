@@ -1,5 +1,5 @@
-import type { FlightOffer } from "../types";
-import { getTotalDuration, getFlightPrice } from "./flightUtils";
+import type { FlightOffer } from "@/types";
+import { getTotalDuration, getFlightPrice } from "@/utils/flightUtils";
 
 export type SortOption = "best" | "price_high" | "fastest";
 

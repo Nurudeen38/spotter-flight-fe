@@ -1,5 +1,5 @@
-export * from "./atoms";
-export * from "./molecules";
-export * from "./organisms";
-export * from "./shared";
-export { ErrorBoundary } from "./ErrorBoundary";
+export * from "@/components/atoms";
+export * from "@/components/molecules";
+export * from "@/components/organisms";
+export * from "@/components/shared";
+export { ErrorBoundary } from "@/components/ErrorBoundary";

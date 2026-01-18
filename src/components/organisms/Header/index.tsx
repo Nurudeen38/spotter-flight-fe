@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Logo } from "../../atoms";
-import { ThemeToggle } from "../../atoms/ThemeToggle";
-import { CurrencySelector } from "../../atoms/CurrencySelector";
+import { Logo } from "@/components/atoms";
+import { ThemeToggle } from "@/components/atoms/ThemeToggle";
+import { CurrencySelector } from "@/components/atoms/CurrencySelector";
 
 const Header = () => {
   return (

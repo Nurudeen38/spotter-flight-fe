@@ -1,10 +1,10 @@
 import { Autocomplete, CircularProgress, TextField } from "@mui/material";
 import styled from "styled-components";
-import { theme } from "../../../utils";
-import type { City } from "../../../types";
+import { theme } from "@/utils";
+import type { City } from "@/types";
 import { Fragment, useState } from "react";
-import { useCitySearch, useTopCities, useDebounceInput } from "../../../hooks";
-import { DEBOUNCE_DELAY_MS } from "../../../constants";
+import { useCitySearch, useTopCities, useDebounceInput } from "@/hooks";
+import { DEBOUNCE_DELAY_MS } from "@/constants";
 
 interface IProps {
   label: string;

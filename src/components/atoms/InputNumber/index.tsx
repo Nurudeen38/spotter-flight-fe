@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { InputWrapper } from "../Input";
-import { theme } from "../../../utils";
+import { InputWrapper } from "@/components/atoms/Input";
+import { theme } from "@/utils";
 import { Minus, PlusIcon } from "lucide-react";
 
 interface IProps {

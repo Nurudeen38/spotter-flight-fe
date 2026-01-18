@@ -6,10 +6,10 @@ import {
     FlightCard,
     PriceGraph,
     FlightDetailsModal,
-} from "../../";
-import { LoadingSkeleton, EmptyState, ErrorState } from "../../shared";
-import { useFlightSearchContext } from "../../../context/FlightSearchContext";
-import type { FlightOffer } from "../../../types";
+} from "@/components";
+import { LoadingSkeleton, EmptyState, ErrorState } from "@/components/shared";
+import { useFlightSearchContext } from "@/context/FlightSearchContext";
+import type { FlightOffer } from "@/types";
 import {
     ResultsSection,
     EmptyStateWrapper,
@@ -19,7 +19,7 @@ import {
     ResultsInfo,
     PaginationContainer,
     StyledPagination,
-} from "../../../pages/SearchPage/styled";
+} from "@/pages/SearchPage/styled";
 
 export const SearchResults = () => {
     const {

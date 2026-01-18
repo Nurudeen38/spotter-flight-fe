@@ -1,9 +1,9 @@
 import { Dialog, DialogContent, IconButton } from "@mui/material";
 import { Plane, X } from "lucide-react";
-import type { FlightOffer } from "../../../types";
-import { IncludedServices } from "./components/IncludedServices";
-import { ItineraryList } from "./components/ItineraryList";
-import { PriceOverview } from "./components/PriceOverview";
+import type { FlightOffer } from "@/types";
+import { IncludedServices } from "@/components/molecules/FlightDetailsModal/components/IncludedServices";
+import { ItineraryList } from "@/components/molecules/FlightDetailsModal/components/ItineraryList";
+import { PriceOverview } from "@/components/molecules/FlightDetailsModal/components/PriceOverview";
 import {
     BookButton,
     ModalContent,
@@ -11,7 +11,7 @@ import {
     StyledDialogActions,
     StyledDialogTitle,
     TitleContainer,
-} from "./styles";
+} from "@/components/molecules/FlightDetailsModal/styles";
 
 interface FlightDetailsModalProps {
     open: boolean;

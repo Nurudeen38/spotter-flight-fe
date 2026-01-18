@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DEBOUNCE_DELAY_MS } from "../constants";
+import { DEBOUNCE_DELAY_MS } from "@/constants";
 
 /**
  * Custom hook to debounce input values

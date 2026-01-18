@@ -1,5 +1,5 @@
 import z from "zod";
-import type { City, TripType, CabinClass } from "../types";
+import type { City, TripType, CabinClass } from "@/types";
 
 export type { TripType, CabinClass };
 

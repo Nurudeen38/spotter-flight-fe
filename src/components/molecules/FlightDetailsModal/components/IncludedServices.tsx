@@ -1,6 +1,6 @@
 import { CheckCircle2 } from "lucide-react";
-import type { FlightOffer } from "../../../../types";
-import { IncludedServices as StyledIncludedServices, ServiceTitle, ServicesList, ServiceChip } from "../styles";
+import type { FlightOffer } from "@/types";
+import { IncludedServices as StyledIncludedServices, ServiceTitle, ServicesList, ServiceChip } from "@/components/molecules/FlightDetailsModal/styles";
 
 interface IncludedServicesProps {
     pricingOptions: FlightOffer["pricingOptions"];
