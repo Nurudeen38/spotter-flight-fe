@@ -1,25 +1,22 @@
 import type { FlightSearchParams } from "../types";
 import { apiClient } from "../utils";
-import { MAX_FLIGHT_RESULTS, CITY_SEARCH_MIN_LENGTH } from "../constants";
-
-// const MAX_CITY_RESULTS = 10;
+import { MAX_FLIGHT_RESULTS, CITY_SEARCH_MIN_LENGTH, API_ENDPOINTS } from "../constants";
 
 export const searchCities = (query: string) => {
   if (query.length < CITY_SEARCH_MIN_LENGTH) {
     return Promise.resolve({ data: { data: [] } });
   }
 
-  return apiClient.get("/v1/reference-data/locations", {
+  return apiClient.get(API_ENDPOINTS.CITIES, {
     params: {
       keyword: query,
-      // max: MAX_CITY_RESULTS,
       subType: "CITY,AIRPORT"
     },
   });
 };
 
 export const searchFlights = (params: FlightSearchParams) =>
-  apiClient.get("/v2/shopping/flight-offers", {
+  apiClient.get(API_ENDPOINTS.FLIGHTS, {
     params: {
       originLocationCode: params.originIataCode,
       destinationLocationCode: params.destinationIataCode,

@@ -163,7 +163,7 @@ export interface FlightSearchResponse {
 // Re-export specific types from other files if needed, or import them here to consolidate
 // For now, we are defining base types here to avoid circular deps if schema imports this.
 
-export type SortOption = "price" | "duration" | "date";
+export type SortOption = "best" | "price_high" | "fastest";
 
 // From urlUtils
 export interface FlightSearchUrlParams {
