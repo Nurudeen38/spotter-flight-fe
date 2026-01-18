@@ -120,7 +120,7 @@ export const SearchResults = () => {
                                         <StyledPagination
                                             count={totalPages}
                                             page={currentPage}
-                                            onChange={(_event, page) => handlePageChange(page)}
+                                            onChange={(_event: any, page: number) => handlePageChange(page)}
                                             color="primary"
                                             showFirstButton
                                             showLastButton
