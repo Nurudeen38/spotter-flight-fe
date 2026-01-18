@@ -60,7 +60,7 @@ export const FlightSearchProvider = ({ children }: { children: ReactNode }) => {
         if (shouldSearch && resultsRef.current) {
             resultsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-    }, [shouldSearch]);
+    }, [shouldSearch, queryParams]);
 
     // Fetch flights
     const { data, isLoading, isFetching, isError, refetch } = useFlightSearch(
