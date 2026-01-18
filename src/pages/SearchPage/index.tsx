@@ -52,6 +52,8 @@ import {
 } from "./styled";
 
 const SearchPage = () => {
+    const [selectedFlight, setSelectedFlight] = useState<FlightOffer | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const { setSearchParams, queryParams, shouldSearch, hasSearched } = useFlightSearchState();
     const resultsRef = useRef<HTMLDivElement>(null);
 
@@ -138,9 +140,6 @@ const SearchPage = () => {
         setValue("from", to, { shouldDirty: true });
         setValue("to", from, { shouldDirty: true });
     };
-
-    const [selectedFlight, setSelectedFlight] = useState<FlightOffer | null>(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleFlightSelect = (flight: FlightOffer) => {
         setSelectedFlight(flight);
