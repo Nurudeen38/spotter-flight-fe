@@ -56,7 +56,7 @@ export const parseSearchParams = (
     date: departureDate,
     travelClass,
     returnDate: searchParams.get("returnDate") || undefined,
-    currency: "USD",
+    currency: searchParams.get("currency") || "USD",
     adults: Number(searchParams.get("adults")) || 1,
     originEntityId,
     destinationEntityId,

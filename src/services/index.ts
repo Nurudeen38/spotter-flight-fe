@@ -25,5 +25,6 @@ export const searchFlights = (params: FlightSearchParams) =>
       adults: params.adults || 1,
       max: MAX_FLIGHT_RESULTS,
       travelClass: params.travelClass,
+      currencyCode: params.currency
     },
   });

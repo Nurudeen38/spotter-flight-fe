@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Logo } from "../../atoms";
 import { ThemeToggle } from "../../atoms/ThemeToggle";
+import { CurrencySelector } from "../../atoms/CurrencySelector";
 
 const Header = () => {
   return (
@@ -9,7 +10,10 @@ const Header = () => {
         <Logo />
         <PoweredBy>Powered by Amadeus</PoweredBy>
       </LogoSection>
-      <ThemeToggle />
+      <ActionsSection>
+        <CurrencySelector />
+        <ThemeToggle />
+      </ActionsSection>
     </HeaderWrapper>
   );
 };
@@ -35,4 +39,10 @@ const PoweredBy = styled.span`
   font-size: 11px;
   color: var(--text-muted);
   font-weight: 500;
+`;
+
+const ActionsSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;

@@ -5,7 +5,8 @@ import { useState, useEffect } from "react";
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem("theme");
-    return saved === "dark";
+    if (saved) return saved === "dark";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
   useEffect(() => {
@@ -14,8 +15,8 @@ const ThemeToggle = () => {
   }, [isDark]);
 
   return (
-    <ToggleButton 
-      onClick={() => setIsDark(!isDark)} 
+    <ToggleButton
+      onClick={() => setIsDark(!isDark)}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       {isDark ? <Sun size={20} /> : <Moon size={20} />}
