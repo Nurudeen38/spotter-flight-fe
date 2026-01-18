@@ -1,10 +1,6 @@
-/**
- * Centralized type definitions for better type safety and reusability
- */
-
 export type TripType = "one-way" | "round-trip";
 export type CabinClass = "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
-export type TravelClass = CabinClass; // Alias for consistency
+export type TravelClass = CabinClass;
 
 export interface FlightSearchParams {
   originIataCode: string;
@@ -16,7 +12,7 @@ export interface FlightSearchParams {
   originEntityId: string;
   destinationEntityId: string;
   sortBy?: string;
-  travelClass?: TravelClass | string; // Allow string for URL params but prefer strict type
+  travelClass?: TravelClass | string;
 }
 
 export interface FlightOffer {
@@ -115,12 +111,12 @@ export interface City {
 }
 
 export interface FlightFilters {
-  stops: number | null; // null means "any", 0 means "non-stop", 1+ means that many stops
+  stops: number | null;
   priceRange: {
     min: number | null;
     max: number | null;
   };
-  airlines: string[]; // Array of airline codes to filter by
+  airlines: string[];
 }
 
 export interface CarrierDictionary {
@@ -160,12 +156,8 @@ export interface FlightSearchResponse {
   dictionaries: ApiDictionaries;
 }
 
-// Re-export specific types from other files if needed, or import them here to consolidate
-// For now, we are defining base types here to avoid circular deps if schema imports this.
-
 export type SortOption = "best" | "price_high" | "fastest";
 
-// From urlUtils
 export interface FlightSearchUrlParams {
   originIataCode?: string | null;
   destinationIataCode?: string | null;
