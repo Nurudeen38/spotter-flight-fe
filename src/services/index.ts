@@ -2,7 +2,7 @@ import type { FlightSearchParams } from "../types";
 import { apiClient } from "../utils";
 import { MAX_FLIGHT_RESULTS, CITY_SEARCH_MIN_LENGTH } from "../constants";
 
-const MAX_CITY_RESULTS = 10;
+// const MAX_CITY_RESULTS = 10;
 
 export const searchCities = (query: string) => {
   if (query.length < CITY_SEARCH_MIN_LENGTH) {
