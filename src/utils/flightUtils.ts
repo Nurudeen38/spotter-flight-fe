@@ -2,16 +2,10 @@ import type { FlightOffer, CarrierDictionary } from "@/types";
 import { formatDateForUrl } from "@/utils/urlUtils";
 import type { FlightFormSchema } from "@/schemas/flightFormSchema";
 
-/**
- * Extracts the total price from a flight offer
- */
 export const getFlightPrice = (flight: FlightOffer): number => {
   return parseFloat(flight.price.total);
 };
 
-/**
- * Calculates total duration in minutes for a flight offer across all itineraries
- */
 export const getTotalDuration = (flight: FlightOffer): number => {
   return flight.itineraries.reduce((totalMins, itinerary) => {
     return totalMins + parseDurationToMinutes(itinerary.duration);
